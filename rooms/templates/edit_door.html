@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Modify Doors</h1>
+    <p>
+        <form name="room_door" action="" method="POST">
+            {% csrf_token %}
+            <p>
+                Next Door: <input type="text" name="next_room" placeholder="{{ edit_door.next_room }}" />
+            </p>
+            <p>
+                Wall: <input type="number" name="wall" placeholder="{{ edit_door.wall }}" />
+            </p>
+            <p>
+                Location: <input type="number" name="location" placeholder="{{ edit_door.location }}" />
+            </p>
+            <input type=submit value="Submit">
+        </form>
+    </p>
+</div>
+{% endblock %}

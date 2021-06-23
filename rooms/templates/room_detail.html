@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<h1>One Room to rule them All!</h1>
+<div>
+    <dl>
+        <h2>{{ room.name|capfirst }}</h2>
+        <dt>Description:</dt>
+        <dd>{{ room.description }}</dd>
+        <dt>Shape:</dt>
+        <dd>{{ room.shape }}</dd>
+        <dt>Width:</dt>
+        <dd>{{ room.width }}</dd>
+        <dt>Height:</dt>
+        <dd>{{ room.height }}</dd>
+        {% if room.doors.all %}
+            <dt>Doors</dt>
+            <dd><label>Next Room</label><label>Wall</label><label>Location</label></dd>
+            {% for door in room.doors.all %}
+                <dd>{{ door.next_room }}
+                {{ door.wall }}
+                {{ door.location }}</dd>
+            {% endfor %}
+        {% endif %}
+    </dl>
+</div>
+{% endblock %}

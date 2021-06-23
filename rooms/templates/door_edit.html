@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<h1>Edit {{ edit_room.name }} Room</h1>
+<form name="create" action= "" method="POST">
+    {% csrf_token %}
+    <label>Room Name: </label>
+    <input type="text" name="name" placeholder="{{ edit_room.name }}" value="{{ edit_room.name }}" />
+    <br>
+    <label>Description: </label>
+    <input type="text" name="description" placeholder="{{ edit_room.description }}" />
+    <br>
+    <label>Shape: </label>
+    <input type="text" name="shape" placeholder="{{edit_room.shape }}" />
+    <br>
+    <label>Width: </label>
+    <input type="number" name="width" placeholder="{{edit_room.width }}" />
+    <br>
+    <label>Height: </label>
+    <input type="number" name="height" placeholder="{{ edit_room.height }}" />
+    <br>
+    <p><a href="{% url 'room_edit' edit_room.id %}"><button>ER</button></a></p>
+    {% for door in edit_room.doors.all %}
+        <p>
+            <a href="{% url 'door_delete' door.id %}">
+                Door: {{ door.next_room }}
+                <button>x</button>
+            </a>
+        </p>
+    {% endfor %}
+    <br />
+</form>
+{% for d in doors %}
+    <p>Available Door: {{ d }}
+        <input type="checkbox" name="doors" value="{{ d.id }}" />
+        <a href="{% url 'door_delete' d.id %}">
+            <button>XX {{ d.id }}</button>
+        </a>
+    </p>
+{% endfor %}
+<form name="door_add" action= "{% url 'door_edit' %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="room_id" value="{{edit_room.id}}" />
+    <p>
+        <input type="text" name="new_door">
+        <button>Add Door</button>
+    </p>
+</form>
+{% endblock %}

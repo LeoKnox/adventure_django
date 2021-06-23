@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<style> 
+body {
+    color: darkblue;
+}
+
+#door {
+    margin-left: -40px;
+}
+</style>
+<h1>Map of Room</h1>
+<p>
+{{ room_id }}
+</p>
+<a href="{% url 'room_edit' room_id %}">
+    <button>Edit</button>
+</a>
+<div id="borderimg1" style="width:160px; height:{{ room_id | add:'80'}}px;">
+    {% load static %}
+    <img id="door" src="{% static 'images/door.png' %}" />
+    <p>Room</p>
+</div>
+{% endblock %}

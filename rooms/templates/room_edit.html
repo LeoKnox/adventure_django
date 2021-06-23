@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<style> 
+body {
+    color: darkblue;
+}
+
+#door {
+    margin-left: -40px;
+}
+</style>
+<h1>Edit {{ edit_room.name }} Room</h1>
+<p><a href="{% url 'room_map' edit_room.id %}">Map</a></p>
+<form name="create" action= "" method="POST">
+    {% csrf_token %}
+    <label>Room Name: </label>
+    <input type="text" name="name" placeholder="{{ edit_room.name }}" value="{{ edit_room.name }}" />
+    <br>
+    <label>Description: </label>
+    <input type="text" name="description" placeholder="{{ edit_room.description }}" />
+    <br>
+    <label>Shape: </label>
+    <input type="text" name="shape" placeholder="{{edit_room.shape }}" />
+    <br>
+    <label>Width: </label>
+    <input type="number" name="width" placeholder="{{edit_room.width }}" />
+    <br>
+    <label>Height: </label>
+    <input type="number" name="height" placeholder="{{ edit_room.height }}" />
+    <br>
+    <table>
+        <tr>
+            <th>Door</th>
+            <th>Wall</th>
+            <th>Location</th>
+            <th colspan=2>Options</th>
+        </tr>
+    {% for door in edit_room.doors.all %}
+        <tr>
+            <input type="hidden" name="doors" value="{{ door.id }}">
+            <td>{{ door.next_room }}</td>
+            <td><input type="integer" name="doors" value= "{{ door.wall }}" /></td>
+            <td><input type="integer" name="doors" value= "{{ door.location }}" /></td>
+            <td><button><a href="{% url 'edit_door' door.id %}">Edit</a></button></td>
+            <td><a href="{% url 'edit_delete' door.id edit_room.id %}">Remove</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+    <br />
+{% for d in doors %}
+        {% if edit_room.id != d.id %}
+        <p>
+        <a href="{% url 'door_delete' d.id %}">
+            <button><strong>Delete</strong></button>
+        </a>
+        Available Door: {{ d.name }}
+            <input type="checkbox" name="dooradd" value="{{ d.name }}" />
+        </p>
+        {% endif %}
+{% endfor %}
+<p>
+    <a href="{% url 'room_edit' edit_room.id %}">
+    <button>Update Room</button>
+    </a>
+</p>
+    <input type="submit" name="edit_room" Value="Submit Edit" />
+</form>
+<div id="borderimg1" style="width:{% widthratio edit_room.width 1 40 %}px; height: {% widthratio edit_room.height 1 40 %}px";>
+    {% load static %}
+    {% for d in edit_room.doors.all %}
+        {% if d.wall == 3 %}
+        <div style="position: relative; margin-top:{% widthratio d.location 1 40 %}px">
+            <img id="door" src="{% static 'images/door.png' %}" />
+        </div>
+        {% elif d.wall == 1 %}
+        <div style="margin-left: {% widthratio edit_room.width|add:1 1 40 %}px; margin-top:{% widthratio d.location 1 40%}px;">
+            <img id="door" src="{% static 'images/door.png' %}" />
+        </div>
+        {% else %}
+            <p>7</p>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<h1>All Rooms!</h1>
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Shape</th>
+            <th>Width</th>
+            <th>Height</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <th colspan=4>Description</th>
+            <th></th>
+        </tr>
+        {% for room in rooms %}
+            <tr>
+                <td>
+                    <a href="{% url 'room_detail' room.id %}">
+                        {{ room.name|capfirst }}</td>
+                    </a>
+                <td>{{ room.shape }}</td>
+                <td>{{ room.width }}</td>
+                <td>{{ room.height }}</td>
+                <td>
+                    <a href="{% url 'room_edit' room.id %}">
+                        <button>Edit</button>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=4>{{ room.description }}</td>
+                <td>
+                    <a href="{% url 'room_delete' room.id %}">
+                        <button>Delete</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
