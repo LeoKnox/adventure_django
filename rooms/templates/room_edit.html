@@ -73,11 +73,11 @@ body {
     {% load static %}
     {% for d in edit_room.doors.all %}
         {% if d.wall == 3 %}
-        <div style="position: relative; margin-top:{% widthratio d.location 1 40 %}px">
+        <div style="position: absolute; margin-top:{% widthratio d.location 1 40 %}px">
             <img id="door" src="{% static 'images/door.png' %}" />
         </div>
         {% elif d.wall == 1 %}
-        <div style="margin-left: {% widthratio edit_room.width|add:1 1 40 %}px; margin-top:{% widthratio d.location 1 40%}px;">
+        <div style="position: absolute; margin-left: {% widthratio edit_room.width|add:1 1 40 %}px; margin-top:{% widthratio d.location 1 40%}px;">
             <img id="door" src="{% static 'images/door.png' %}" />
         </div>
         {% else %}
