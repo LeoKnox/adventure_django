@@ -76,12 +76,18 @@ body {
         <div style="position: absolute; margin-top:{% widthratio d.location 1 40 %}px">
             <img id="door" src="{% static 'images/door.png' %}" />
         </div>
+        {% elif d.wall == 2 %}
+        <div style="position: absolute; margin-left: {% widthratio edit_room.width|add:1 1 40 %}px; margin-top:{% widthratio d.location 1 40%}px;">
+            <img id="door" src="{% static 'images/door.png' %}" />
+        </div>
         {% elif d.wall == 1 %}
         <div style="position: absolute; margin-left: {% widthratio edit_room.width|add:1 1 40 %}px; margin-top:{% widthratio d.location 1 40%}px;">
             <img id="door" src="{% static 'images/door.png' %}" />
         </div>
-        {% else %}
-            <p>7</p>
+        {% elif d.wall == 0 %}
+        <div style="position: absolute; margin-left: {% widthratio d.location 1 40 %}px; margin-top:-40px;">
+            <img id="door" src="{% static 'images/door.png' %}" />
+        </div>
         {% endif %}
     {% endfor %}
 </div>
