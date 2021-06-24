@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 
-from .models import Room, Door
+from .models import Room, Door, Treasure
 
 def home(request):
     rooms = Room.objects.all()
@@ -72,7 +72,6 @@ def room_edit(request, room_id):
         if request.POST.get('height') != "":
             edit_room.height = request.POST.get('height')
         new_door = request.POST.getlist('dooradd') #doesn't but does now!
-        print(new_door)
         for nd in new_door:
             if nd != "":
                 nd_add = Door(next_room = nd)
@@ -80,14 +79,8 @@ def room_edit(request, room_id):
                 edit_room.doors.add(nd_add)
         new_doors = request.POST.getlist('doors') 
         new_door2 = [new_doors[x:x+3] for x in range(0, len(new_doors), 3) if x != '']
-        print("++++++++")
-        print(new_doors)
-        print(new_door2)
         edit_room.save()
-        print("******")
-        print(edit_room)
         for nd in new_door2:
-            print(nd)
             edit_door = Door.objects.get(id = nd[0])
             if nd[1] != "":
                 edit_door.wall = nd[1]
@@ -114,7 +107,10 @@ def about(request):
     return render(request, 'about.html')
 
 def treasure(request):
-    rooms = Room.objects.all()
+    #treasure = Treasure(name="Gold", description="Pile of gold")
+    #treasure.save()
+    room_treasure = Treasure.objects.all()
+    print(room_treasure[0].name)
     return render(request, 'treasure.html')
 
 def edit_delete(request, door_id, room_id):
