@@ -113,11 +113,8 @@ def edit_door(request, door_id):
 def about(request):
     return render(request, 'about.html')
 
-def room_map(request, room_id):
-    room = Room.objects.get(id=room_id)
-    print(room.height)
-    room_id = 80
-    return render(request, 'room_map.html', {'room_id': room_id})
+def treasure(request):
+    return render(request, 'treasure.html')
 
 def edit_delete(request, door_id, room_id):
     remove_door = Room.objects.get(pk = room_id)
