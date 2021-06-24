@@ -114,6 +114,7 @@ def about(request):
     return render(request, 'about.html')
 
 def treasure(request):
+    rooms = Room.objects.all()
     return render(request, 'treasure.html')
 
 def edit_delete(request, door_id, room_id):
