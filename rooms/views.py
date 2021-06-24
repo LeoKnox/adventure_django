@@ -111,7 +111,7 @@ def treasure(request):
     #treasure.save()
     room_treasure = Treasure.objects.all()
     print(room_treasure[0].name)
-    return render(request, 'treasure.html')
+    return render(request, 'treasure.html', {'room_treasure': room_treasure})
 
 def edit_delete(request, door_id, room_id):
     remove_door = Room.objects.get(pk = room_id)
