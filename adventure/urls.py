@@ -17,5 +17,5 @@ urlpatterns = [
     path('rooms/door_add/', views.door_add, name="door_add"),
     path('rooms/edit_door/<int:door_id>', views.edit_door, name='edit_door'),
     path('rooms/about/', views.about, name='about'),
-    path('rooms/map/<int:room_id>/', views.room_map, name='room_map'),
+    path('rooms/treasure', views.treasure, name='treasure'),
 ]
