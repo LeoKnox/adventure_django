@@ -15,5 +15,9 @@ class Door(models.Model):
     location = models.IntegerField(null=True, default=0)
     wall = models.IntegerField(null=True, default=0,choices=WALLS)
 
+class Treasure(models.Model):
+    name: models.CharField(max_length=50)
+    descritpion: models.TextField()
+
     def __str__(self):
         return self.next_room
