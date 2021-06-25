@@ -112,7 +112,13 @@ def treasure(request):
     room_treasure = Treasure.objects.all()
     print(room_treasure[0].name)
     if request.method == "POST":
+        print(request.POST.get('name'))
+        print(request.POST.get('description'))
+        new_treasure = Treasure()
+        new_treasure.name = request.POST.get('name')
+        new_treasure.description = request.POST.get('description')
         print("post requested")
+        new_treasure.save()
     return render(request, 'treasure.html', {'room_treasure': room_treasure})
 
 def edit_delete(request, door_id, room_id):
