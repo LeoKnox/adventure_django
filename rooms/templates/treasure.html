@@ -9,4 +9,15 @@
 {% for t in room_treasure %}
 <p>{{ t.name }} : {{ t.description }}</p>
 {% endfor %}
+<form name="create" action= "" method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Name:</label>
+        <input type="text" name="treasure_name">
+    </p>
+    <p>
+        <label>Description:</label>
+        <input type="text" name="treasure_description">
+    </p>
+</form>
 {% endblock %}
