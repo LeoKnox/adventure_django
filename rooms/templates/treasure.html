@@ -7,7 +7,13 @@
 <h1>Treasure</h1>
 <p>Add treasure to your room</p>
 {% for t in room_treasure %}
-<p>{{ t.name }} : {{ t.description }} <button>Edit</button></p>
+<p>{{ t.name }} : {{ t.description }} 
+    <a href="{% url 'treasure' %}">
+        <button>
+            Edit
+        </button>
+    </a>
+</p>
 {% endfor %}
 <form name="treaure" action= "" method="POST">
     {% csrf_token %}
