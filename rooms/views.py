@@ -115,8 +115,8 @@ def treasure(request):
         print(request.POST.get('name'))
         print(request.POST.get('description'))
         new_treasure = Treasure(
-            name = request.POST.get('name'),
-            description = request.POST.get('description')
+            name = request.POST.get('treasure_name'),
+            description = request.POST.get('treasure_description')
         )
         print("post requested")
         new_treasure.save()
