@@ -8,12 +8,12 @@
 <p>Add treasure to your room</p>
 {% for t in room_treasure %}
 <p>{{ t.name }} : {{ t.description }} 
-    <a href="{% url 'treasure' %}">
+    <a href="{% url 'edit_treasure' t.id %}">
         <button>
             Edit
         </button>
     </a>
-    <a href="{% url 'treasure' %}">
+    <a href="{% url 'edit_treasure' t.id %}">
         <button>
             Delete
         </button>

@@ -122,3 +122,6 @@ def treasure(request):
         )
         new_treasure.save()
     return render(request, 'treasure.html', {'room_treasure': room_treasure})
+
+def edit_treasure(request, treasure_id):
+    return redirect('home')
