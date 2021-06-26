@@ -107,18 +107,12 @@ def about(request):
     return render(request, 'about.html')
 
 def treasure(request):
-    #treasure = Treasure(name="Gold", description="Pile of gold")
-    #treasure.save()
     room_treasure = Treasure.objects.all()
-    print(room_treasure[0].name)
     if request.method == "POST":
-        print(request.POST.get('name'))
-        print(request.POST.get('description'))
         new_treasure = Treasure(
             name = request.POST.get('treasure_name'),
             description = request.POST.get('treasure_description')
         )
-        print("post requested")
         new_treasure.save()
     return render(request, 'treasure.html', {'room_treasure': room_treasure})
 
