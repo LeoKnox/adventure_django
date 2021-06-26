@@ -106,6 +106,13 @@ def edit_door(request, door_id):
 def about(request):
     return render(request, 'about.html')
 
+def edit_delete(request, door_id, room_id):
+    remove_door = Room.objects.get(pk = room_id)
+    remove_door.doors.remove(door_id)
+    second_remove = Door.objects.get(pk = door_id)
+    second_remove.delete()
+    return redirect('room_edit', room_id)
+
 def treasure(request):
     room_treasure = Treasure.objects.all()
     if request.method == "POST":
@@ -115,10 +122,3 @@ def treasure(request):
         )
         new_treasure.save()
     return render(request, 'treasure.html', {'room_treasure': room_treasure})
-
-def edit_delete(request, door_id, room_id):
-    remove_door = Room.objects.get(pk = room_id)
-    remove_door.doors.remove(door_id)
-    second_remove = Door.objects.get(pk = door_id)
-    second_remove.delete()
-    return redirect('room_edit', room_id)
