@@ -14,7 +14,6 @@ body {
 }
 </style>
 <h1>Edit {{ edit_room.name }} Room</h1>
-<p><a href="{% url 'room_map' edit_room.id %}">Map</a></p>
 <form name="create" action= "" method="POST">
     {% csrf_token %}
     <label>Room Name: </label>
