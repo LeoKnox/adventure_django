@@ -121,6 +121,7 @@ def treasure(request):
         new_treasure = Treasure(
             name = request.POST.get('treasure_name'),
             description = request.POST.get('treasure_description')
+            #room = request.POST.get('treasure_rooms')
         )
         new_treasure.save()
     return render(request, 'treasure.html', {'room_treasure': room_treasure})
