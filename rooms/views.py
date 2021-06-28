@@ -60,6 +60,8 @@ def room_edit(request, room_id):
     doors = Room.objects.all()
     doors = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.values_list('next_room', flat=True)]
     doors = Room.objects.filter(name__in = doors)
+    treasures = Treasure.objects.get(room = room_id)
+    print(treasures)
     if request.method == "POST":
         if request.POST.get('name') != "":
             edit_room.name = request.POST.get('name')
