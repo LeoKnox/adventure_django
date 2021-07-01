@@ -90,7 +90,7 @@ def room_edit(request, room_id):
                 edit_door.location = nd[2]
             edit_door.save()
         return redirect('room_edit', room_id)
-    return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors})
+    return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors, 'treasure':treasures})
 
 def edit_door(request, door_id):
     edit_door = Door.objects.get(id = door_id)

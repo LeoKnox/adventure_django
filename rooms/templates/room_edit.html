@@ -50,6 +50,9 @@ body {
     {% endfor %}
     </table>
     <br />
+{% for t in treasures %}
+    <p>{{ t.name }}</p>
+{% endfor %}
 {% for d in doors %}
         {% if edit_room.id != d.id %}
         <p>
