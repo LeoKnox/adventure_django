@@ -52,6 +52,8 @@ body {
     <br />
 {% for t in treasures %}
     <p>Treasure name: {{ t.name }}</p>
+    <p>Description: {{ t.description }}</p>
+    <br>
 {% endfor %}
 {% for d in doors %}
         {% if edit_room.id != d.id %}
