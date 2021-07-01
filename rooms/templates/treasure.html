@@ -33,6 +33,9 @@
         <label>Description:</label>
         <input type="text" name="treasure_description">
     </p>
+    {% for room in rooms %}
+        <p>{{ room.name }}</p>
+    {% endfor %}
     <input type=submit value="Submit">
 </form>
 {% endblock %}
