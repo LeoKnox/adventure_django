@@ -33,12 +33,15 @@
         <label>Description:</label>
         <input type="text" name="treasure_description">
     </p>
+    <input type=submit value="Submit">
+</form>
+<form>
     {% for room in rooms %}
         <p>
             Add Room: {{ room.name }}
                 <input type="checkbox" name="dooradd" value="{{ room.name }}" />
         </p>
     {% endfor %}
-    <input type=submit value="Submit">
+    <input type=submit value="Add Treasure">
 </form>
 {% endblock %}
