@@ -18,4 +18,6 @@ urlpatterns = [
     path('rooms/edit_door/<int:door_id>', views.edit_door, name='edit_door'),
     path('rooms/about/', views.about, name='about'),
     path('rooms/treasure', views.treasure, name='treasure'),
+    path('rooms/edit_treasure/<int:treasure_id>', views.edit_treasure, name='edit_treasure'),
+    path('rooms/assign_treasure/', views.assign_treasure, name='assign_treasure'),
 ]
