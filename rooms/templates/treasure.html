@@ -35,7 +35,8 @@
     </p>
     <input type=submit value="Submit">
 </form>
-<form>
+<form name="assign_treasure" action="" method="POST">
+    {% csrf_token %}
     {% for room in rooms %}
         <p>
             Add Room: {{ room.name }}

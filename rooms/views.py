@@ -131,3 +131,6 @@ def edit_treasure(request, treasure_id):
     remove_treasure = Treasure.objects.get(pk = treasure_id)
     remove_treasure.delete()
     return redirect('treasure')
+
+def assign_treasure(request):
+    return render(request, 'home.html')
