@@ -39,9 +39,10 @@
     {% csrf_token %}
     {% for room in rooms %}
         <p>
-            <input type="hidden" name="room" value="{{ room.id }}">
+            <input type="hidden" name="id" value="{{ room.id }}">
             Add Room: {{ room.name }}
-                <input type="checkbox" name="name" value="{{ room.name }}" />
+                <input type="checkbox" name="treasuve_name" value="{{ room.name }}" />
+            <input type="hidden" name="treasure_description" value="{{ room.description }}">
         </p>
     {% endfor %}
     <input type=submit value="Add Treasure">
