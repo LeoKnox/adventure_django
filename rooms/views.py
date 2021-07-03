@@ -133,4 +133,5 @@ def edit_treasure(request, treasure_id):
     return redirect('treasure')
 
 def assign_treasure(request):
+    print("assign treasure activated")
     return render(request, 'home.html')
