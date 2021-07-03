@@ -121,7 +121,7 @@ def treasure(request):
     if request.method == "POST":
         new_treasure = Treasure(
             name = request.POST.get('treasure_name'),
-            description = request.POST.get('treasure_description')
+            description = "tea"
             #room = request.POST.get('treasure_rooms')
         )
         new_treasure.save()
