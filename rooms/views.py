@@ -120,6 +120,7 @@ def treasure(request):
     rooms = Room.objects.all()
     if request.method == "POST":
         if request.POST.get('room_id') != "":
+            print('starting add_tresure')
             add_treasure.name = request.POST.get('treasure_name')
             add_treasure.description = request.POST.get('treasure_description')
             add_treasure.room = request.POST.get('room_id')
