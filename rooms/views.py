@@ -122,7 +122,7 @@ def treasure(request):
         if request.POST.get('room_id') != "":
             add_treasure.name = request.POST.get('treasure_name')
             add_treasure.description = request.POST.get('treasure_description')
-            add_treasure.room_id = request.POST.get('room_id')
+            add_treasure.room = request.POST.get('room_id')
             add_treasure.save()
         else:
             new_treasure = Treasure(
