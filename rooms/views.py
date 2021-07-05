@@ -133,6 +133,12 @@ def treasure(request):
             new_treasure.save()
     return render(request, 'treasure.html', {'room_treasure': room_treasure, 'rooms': rooms})
 
+def delete_treasure(request, treasure_id):
+    print('delet treasure')
+    remove_treasure = Treasure.objects.get(pk = treasure_id)
+    remove_treasure.delete()
+    return redirect('treasure')
+
 def edit_treasure(request, treasure_id):
     remove_treasure = Treasure.objects.get(pk = treasure_id)
     remove_treasure.delete()
