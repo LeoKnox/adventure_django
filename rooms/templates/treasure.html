@@ -7,7 +7,7 @@
 <h1>Treasure</h1>
 <p>Add treasure to your room</p>
 {% for t in room_treasure %}
-<form>
+<form name="treasure" action="" method="POST">
     <p><input type="text" name="name" placeholder="{{ t.name }}" /> : <input type="text" name="description" placeholder="{{ t.description }}" />
         <a href="{% url 'edit_treasure' t.id %}">
             <button>

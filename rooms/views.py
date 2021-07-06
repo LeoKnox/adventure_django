@@ -135,13 +135,10 @@ def treasure(request):
 
 def delete_treasure(request, treasure_id):
     print('delet treasure')
-    remove_treasure = Treasure.objects.get(pk = treasure_id)
-    remove_treasure.delete()
+    Treasure.objects.get(pk = treasure_id).delete()
     return redirect('treasure')
 
 def edit_treasure(request, treasure_id):
-    remove_treasure = Treasure.objects.get(pk = treasure_id)
-    remove_treasure.delete()
     return redirect('treasure')
 
 def assign_treasure(request):
