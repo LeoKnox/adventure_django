@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path
 
 from rooms import views
+from room_api import views
 
 app_name = 'rooms'
 urlpatterns = [
