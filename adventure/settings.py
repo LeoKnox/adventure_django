@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sessions',
     'rooms',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
