@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.urls import path
 
 from rooms import views
-from room_api import views
 
 app_name = 'rooms'
 urlpatterns = [
@@ -22,5 +21,4 @@ urlpatterns = [
     path('rooms/edit_treasure/<int:treasure_id>', views.edit_treasure, name='edit_treasure'),
     path('rooms/assign_treasure/', views.assign_treasure, name='assign_treasure'),
     path('rooms/delete_treasure/<int:treasure_id>', views.delete_treasure, name='delete_treasure'),
-    path('api-auth/', include('rest_frame.urls', namespace='rest_framwork')),
 ]
