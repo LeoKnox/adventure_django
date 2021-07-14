@@ -142,6 +142,6 @@ def edit_treasure(request, treasure_id):
     print("editing treasure!!!!")
     return render(request, 'edit_treasure.html')
 
-def assign_treasure(request):
+def assign_treasure(request, room_id):
     edit_treasure = Room.objects.get(pk = room_id)
-    return render(request, 'home.html', {'edit_treasre':edit_treasure})
+    return render(request, 'home.html', {'edit_treasure':edit_treasure})
