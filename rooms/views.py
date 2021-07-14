@@ -139,9 +139,9 @@ def delete_treasure(request, treasure_id):
     return redirect('treasure')
 
 def edit_treasure(request, treasure_id):
+    edit_treasure = Room.objects.get(pk = treasure_id)
     print("editing treasure!!!!")
     return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure})
 
-def assign_treasure(request, room_id):
-    edit_treasure = Room.objects.get(pk = room_id)
+def assign_treasure(request):
     return render(request, 'home.html')
