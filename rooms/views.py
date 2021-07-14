@@ -139,7 +139,8 @@ def delete_treasure(request, treasure_id):
     return redirect('treasure')
 
 def edit_treasure(request, treasure_id):
-    return redirect('treasure')
+    print("editing treasure!!!!")
+    return render(request, 'edit_treasure.html')
 
 def assign_treasure(request):
     print("assign treasure activated")
