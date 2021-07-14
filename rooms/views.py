@@ -140,8 +140,8 @@ def delete_treasure(request, treasure_id):
 
 def edit_treasure(request, treasure_id):
     print("editing treasure!!!!")
-    return render(request, 'edit_treasure.html')
+    return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure})
 
 def assign_treasure(request, room_id):
     edit_treasure = Room.objects.get(pk = room_id)
-    return render(request, 'home.html', {'edit_treasure':edit_treasure})
+    return render(request, 'home.html')
