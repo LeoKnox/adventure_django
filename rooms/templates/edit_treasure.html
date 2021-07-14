@@ -6,4 +6,10 @@
 {% block content %}
 <h1>Edit treasure</h1>
 <p>{{ edit_treasure.name }}</p>
+<form name="edit_treasure" action= "{% url 'edit_treasure'  edit_treasure.id %}" method="POST">
+    {% csrf_token %}
+    <label>Room Name: </label>
+    <input type="text" name="name" />
+    <br>
+</form>
 {% endblock %}
