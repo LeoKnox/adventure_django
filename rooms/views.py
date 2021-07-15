@@ -137,11 +137,11 @@ def delete_treasure(request, treasure_id):
     return redirect('treasure')
 
 def edit_treasure(request, treasure_id):
-    print("******")
-    print(treasure_id)
     edit_treasure = Treasure.objects.get(pk = treasure_id)
+    print("******")
+    print(edit_treasure.name)
     if request.method == "POST":
-        if request.POST.treasure_name != "":
+        if request.POST.get('name') != "":
             print("postintg")
     return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure})
 
