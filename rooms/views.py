@@ -120,7 +120,6 @@ def treasure(request):
     rooms = Room.objects.all()
     if request.method == "POST":
         if request.POST.get('room_id') != "":
-            print('starting add_tresure')
             add_treasure = Treasure()
             add_treasure.name = request.POST.get('treasure_name')
             add_treasure.description = request.POST.get('treasure_description')
@@ -134,14 +133,14 @@ def treasure(request):
     return render(request, 'treasure.html', {'room_treasure': room_treasure, 'rooms': rooms})
 
 def delete_treasure(request, treasure_id):
-    print('delet treasure')
     Treasure.objects.get(pk = treasure_id).delete()
     return redirect('treasure')
 
 def edit_treasure(request, treasure_id):
     edit_treasure = Room.objects.get(pk = treasure_id)
     if request.method == "POST":
-        print("postintg")
+        if request.POST.treasure_name != "":
+            print("postintg")
     return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure})
 
 def assign_treasure(request):
