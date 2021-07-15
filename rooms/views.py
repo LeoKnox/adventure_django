@@ -137,7 +137,9 @@ def delete_treasure(request, treasure_id):
     return redirect('treasure')
 
 def edit_treasure(request, treasure_id):
-    edit_treasure = Room.objects.get(pk = treasure_id)
+    print("******")
+    print(treasure_id)
+    edit_treasure = Treasure.objects.get(pk = treasure_id)
     if request.method == "POST":
         if request.POST.treasure_name != "":
             print("postintg")
