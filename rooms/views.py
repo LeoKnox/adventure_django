@@ -140,7 +140,8 @@ def delete_treasure(request, treasure_id):
 
 def edit_treasure(request, treasure_id):
     edit_treasure = Room.objects.get(pk = treasure_id)
-    print("editing treasure!!!!")
+    if request.method == "POST":
+        print("postintg")
     return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure})
 
 def assign_treasure(request):
