@@ -142,7 +142,10 @@ def edit_treasure(request, treasure_id):
     print(edit_treasure.name)
     if request.method == "POST":
         if request.POST.get('name') != "":
-            print("postintg")
+            edit_treasure.name = request.POST.get('name')
+        if request.POST.get('description') != "":
+            edit_treasure.description = request.POST.get('description')
+        edit_treasure.save()
     return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure})
 
 def assign_treasure(request):
