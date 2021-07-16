@@ -119,17 +119,11 @@ def treasure(request):
     room_treasure = Treasure.objects.all()
     rooms = Room.objects.all()
     if request.method == "POST":
-        if request.POST.get('room_id') != "":
-            add_treasure = Treasure()
-            add_treasure.name = request.POST.get('treasure_name')
-            add_treasure.description = request.POST.get('treasure_description')
-            add_treasure.room = Room.objects.get(id = request.POST.get('room_id'))
-            add_treasure.save()
-        else:
-            name = request.POST.get('treasure_name'),
-            description = request.POST.get('treasure_description'),
-            room_id = request.POST.get('treasure_rooms')
-            new_treasure.save()
+        new_treasure = Treasure.objects.all()
+        new_treasure.name = request.POST.get('treasure_name'),
+        new_treasure.description = request.POST.get('treasure_description'),
+        new_treasure.room_id = request.POST.get('treasure_rooms')
+        new_treasure.save()
     return render(request, 'treasure.html', {'room_treasure': room_treasure, 'rooms': rooms})
 
 def delete_treasure(request, treasure_id):
