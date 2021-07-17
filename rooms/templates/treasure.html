@@ -11,7 +11,7 @@
     {% csrf_token %}
     <p><input type="text" name="name" placeholder="{{ t.name }}" /> : <input type="text" name="description" placeholder="{{ t.description }}" />
         <a href="{% url 'edit_treasure' t.id %}">
-                Edit:{{ t.id }}
+                Assign:{{ t.id }}
         </a>
         <a href="{% url 'delete_treasure' t.id %}">
                 Delete
