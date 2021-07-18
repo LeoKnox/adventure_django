@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<h1>Treasure</h1>
+<p>Add treasure to your room</p>
+{% for t in room_treasure %}
+<form name="delete_treasure" action="" method="POST">
+    {% csrf_token %}
+    <p><input type="text" name="name" placeholder="{{ t.name }}" /> : <input type="text" name="description" placeholder="{{ t.description }}" />
+        <a href="{% url 'edit_treasure' t.id %}">
+                Assign:{{ t.id }}
+        </a>
+        <a href="{% url 'delete_treasure' t.id %}">
+                Delete
+        </a>
+        <label>{{ t.room.name }}</label>
+    </p>
+</form>
+{% endfor %}
+<form name="treaure" action= "" method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Name:</label>
+        <input type="text" name="treasure_name">
+    </p>
+    <p>
+        <label>Description:</label>
+        <input type="text" name="treasure_description">
+    </p>
+    <select name="t_room_name" id="t_room_name">
+        {% for t_room in rooms %}
+            <option value="{{ t_room.name }}">{{t_room.name}}</option>
+        {% endfor %}
+    </select>
+    <input type=submit value="Submit">
+</form>
+<form name="assign_treasure" action="" method="POST">
+    {% csrf_token %}
+    {% for room in rooms %}
+        <p>
+            <input type="hidden" name="room_id" value="{{ room.id }}">
+            Add Room: {{ room.name }}
+                <input type="checkbox" name="treasure_name" value="{{ room.name }}" />
+            <input type="hidden" name="treasure_description" value="{{ room.description }}">
+        </p>
+    {% endfor %}
+    <input type=submit value="Add Treasure">
+</form>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<h1>Edit treasure</h1>
+<p>{{ edit_treasure.name }}</p>
+<form name="edit_treasure" action= "{% url 'edit_treasure'  edit_treasure.id %}" method="POST">
+    {% csrf_token %}
+    <label>Treasure Name: </label>
+    <input type="text" name="name" placeholder={{ edit_treasure.name }}>
+    <br>
+    <label>Treasure Description: </label>
+    <input type="text" name="description" placeholder={{ edit_treasure.description }} >
+    <br>
+    {% for room in room_treasures.room %}
+        <p>{{ room.name }}</p>
+    {% endfor %}
+    <button>Submit</button>
+</form>
+</form>
+{% endblock %}

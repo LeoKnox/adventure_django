@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<h1>Create Room</h1>
+<form name="create" action= "{% url 'room_create' %}" method="POST">
+    {% csrf_token %}
+    <label>Room Name: </label>
+    <input type="text" name="name" />
+    <br>
+    <label>Description: </label>
+    <input type="text" name="description" />
+    <br>
+    <label>Shape: </label>
+    <input type="text" name="shape" />
+    <br>
+    <label>Width: </label>
+    <input type="number" name="width" />
+    <br>
+    <label>Height: </label>
+    <input type="number" name="height" />
+    <br>
+    <label>Doors: </label>
+    <input type="text" list="doors" name="doors" />
+    <datalist name="doors" multiple="multiple" id="doors">
+        {% for door in doors %}
+            <option value="door">{{ door.next_room }}</option>
+        {% endfor %}
+        <option>Red</option>
+    </datalist>
+    <br/>
+    <input type="submit" value="Create">
+</form>
+{% endblock %}
