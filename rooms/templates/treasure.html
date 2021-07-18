@@ -30,7 +30,7 @@
         <label>Description:</label>
         <input type="text" name="treasure_description">
     </p>
-    <select name="room_id" id="room_id">
+    <select name="t_room_id" id="room_id">
         {% for t_room in rooms %}
             <option value="{{ t_room.name }}">{{t_room.name}}</option>
         {% endfor %}
