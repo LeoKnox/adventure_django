@@ -142,7 +142,7 @@ def edit_treasure(request, treasure_id):
         for nd in new_doors:
             single_door = Treasure(room_id = nd)
             single_door.save()
-            edit_treasure.room_id.add(single_door)
+            new_room.doors.add(single_door)
         print("********")
         print(new_doors)
         edit_treasure.save()
