@@ -141,7 +141,7 @@ def edit_treasure(request, treasure_id):
         if request.POST.get('description') != "":
             edit_treasure.description = request.POST.get('description')
         edit_treasure.save()
-    return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure})
+    return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure, 'room_treasures':room_treasures})
 
 def assign_treasure(request):
     return render(request, 'home.html')
