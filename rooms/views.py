@@ -138,6 +138,9 @@ def edit_treasure(request, treasure_id):
             edit_treasure.name = request.POST.get('name')
         if request.POST.get('description') != "":
             edit_treasure.description = request.POST.get('description')
+        new_doors = request.POST.getlist('new_doors')
+        print("********")
+        print(new_doors)
         edit_treasure.save()
     return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure, 'room_treasures':room_treasures})
 
