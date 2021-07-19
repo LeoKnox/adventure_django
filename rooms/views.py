@@ -134,7 +134,7 @@ def delete_treasure(request, treasure_id):
 
 def edit_treasure(request, treasure_id):
     edit_treasure = Treasure.objects.get(pk = treasure_id)
-    room_treasures = room.Room.all()
+    room_treasures = Room.objects.values_list('name', flat=True)
     if request.method == "POST":
         if request.POST.get('name') != "":
             edit_treasure.name = request.POST.get('name')

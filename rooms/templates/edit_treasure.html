@@ -15,7 +15,7 @@
     <input type="text" name="description" placeholder={{ edit_treasure.description }} >
     <br>
     {% for room in room_treasures.room %}
-        <p>{{ room.name }}</p>
+        <p>{{ room }}</p>
     {% endfor %}
     <button>Submit</button>
 </form>
