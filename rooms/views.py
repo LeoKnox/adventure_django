@@ -140,6 +140,7 @@ def edit_treasure(request, treasure_id):
             edit_treasure.description = request.POST.get('description')
         new_doors = request.POST.getlist('new_doors')
         for nd in new_doors:
+            new_treasure = Treasure()
             if request.POST.get('name') != "":
                 new_treasure.name = request.POST.get('name')
             if request.POST.get('description') != "":
