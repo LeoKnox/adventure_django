@@ -141,8 +141,8 @@ def edit_treasure(request, treasure_id):
         new_doors = request.POST.getlist('new_doors')
         for nd in new_doors:
             new_treasure = Treasure()
-            new_treasure.name = request.POST.get('name')
-            new_treasure.description = request.POST.get('description')
+            new_treasure.name = edit_treasure.name
+            new_treasure.description = edit_treasure.description
             new_treasure.room_id = nd
             new_treasure.save()
         print("********")
