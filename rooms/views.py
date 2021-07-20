@@ -140,10 +140,14 @@ def edit_treasure(request, treasure_id):
             edit_treasure.description = request.POST.get('description')
         new_doors = request.POST.getlist('new_doors')
         for nd in new_doors:
+            if request.POST.get('name') != "":
+                new_treasure.name = request.POST.get('name')
+            if request.POST.get('description') != "":
+                new_treasure.description = request.POST.get('description')
             #single_door = Treasure(room_id = nd)
             #single_door.save()
-            edit_treasure.room_id = nd
-            edit_treasure.save()
+            new_treasure.room_id = nd
+            new_treasure.save()
         print("********")
         return redirect('treasure')
     return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure, 'room_treasures':room_treasures})
