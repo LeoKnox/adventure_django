@@ -143,9 +143,8 @@ def edit_treasure(request, treasure_id):
             #single_door = Treasure(room_id = nd)
             #single_door.save()
             edit_treasure.room_id = nd
+            edit_treasure.save()
         print("********")
-        print(new_doors)
-        edit_treasure.save()
         return redirect('treasure')
     return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure, 'room_treasures':room_treasures})
 
