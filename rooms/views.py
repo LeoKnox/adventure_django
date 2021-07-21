@@ -145,7 +145,6 @@ def edit_treasure(request, treasure_id):
             new_treasure.description = edit_treasure.description
             new_treasure.room_id = nd
             new_treasure.save()
-        print("********")
         return redirect('treasure')
     return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure, 'room_treasures':room_treasures})
 
