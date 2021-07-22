@@ -37,6 +37,7 @@ def door_add(request):
 
 def room_create(request):
     if request.method == "POST":
+        new_room = Room()
         new_room.name = request.POST.get('name')
         new_room.description = request.POST.get('description')
         new_room.shape = request.POST.get('shape')
