@@ -25,7 +25,6 @@ def room_delete(request, room_id):
 
 def door_edit(request):
     add_door = Door(next_room = request.POST.get('new_door'))
-    print(add_door)
     add_door.save()
     room_id = request.POST.get('room_id')
     return redirect('room_edit', room_id)
@@ -56,8 +55,6 @@ def room_create(request):
     return render(request, 'room_create.html', {'doors': doors, 'rooms':rooms, 'room_shapes':room_shapes})
 
 def room_edit(request, room_id):
-    print("8888888")
-    print(room_id)
     edit_room = Room.objects.get(pk = room_id)
     shapes = Room.SHAPES
     doors = Room.objects.all()
