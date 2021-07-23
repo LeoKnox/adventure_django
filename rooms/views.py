@@ -130,6 +130,8 @@ def delete_treasure(request, treasure_id):
 
 def edit_treasure(request, treasure_id):
     edit_treasure = Treasure.objects.get(pk = treasure_id)
+    print("*******")
+    print(edit_treasure)
     room_treasures = Room.objects.all()
     if request.method == "POST":
         if request.POST.get('name') != "":
