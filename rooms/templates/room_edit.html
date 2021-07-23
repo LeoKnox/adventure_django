@@ -53,6 +53,9 @@ body {
 {% for t in treasures %}
     <p>Treasure name: {{ t.name }}</p>
     <p>Description: {{ t.description }}</p>
+    <a href="{% url 'delete_treasure' t.id %}">
+            Delete
+    </a>
     <br>
 {% endfor %}
 {% for d in doors %}
