@@ -17,7 +17,9 @@
     <dl>
     <dd>Rooms treasure are found in</dd>
     {% for treasure in room_treasures %}
-        <dt>{{ treasure.name }}</dt>
+        <dt>{{ treasure.name }}
+            <a href="">Remove from room</a>
+        </dt>
     {% endfor %}
     </dl>
     {% for room in room_treasures %}
