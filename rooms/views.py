@@ -97,7 +97,7 @@ def edit_door(request, door_id):
         errors = Door.objects.basic_validator(request.POST)
         if len(errors) > 0:
             print("*******")
-            print("WRONG!")
+            print(errors)
         if request.POST.get('next_room') != "":
             edit_door.next_room = request.POST.get('next_room')
         if request.POST.get('wall') != "":
