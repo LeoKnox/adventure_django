@@ -106,7 +106,7 @@ def edit_door(request, door_id):
             edit_door.location = request.POST.get('location')
         edit_door.save()
         return redirect('home')
-    return render(request, 'edit_door.html', {'edit_door': edit_door, 'errors':errors})
+    return render(request, 'edit_door.html', {'edit_door': edit_door})
 
 def about(request):
     return render(request, 'about.html')
