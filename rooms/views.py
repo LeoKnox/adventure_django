@@ -98,6 +98,7 @@ def edit_door(request, door_id):
         if len(errors) > 0:
             print("*******")
             print(errors)
+            return render(request, 'edit_door.html', {'edit_door': edit_door, 'errors': errors})
         if request.POST.get('next_room') != "":
             edit_door.next_room = request.POST.get('next_room')
         if request.POST.get('wall') != "":
@@ -106,7 +107,7 @@ def edit_door(request, door_id):
             edit_door.location = request.POST.get('location')
         edit_door.save()
         return redirect('home')
-    return render(request, 'edit_door.html', {'edit_door': edit_door, 'errors': errors})
+    return render(request, 'edit_door.html', {'edit_door': edit_door})
 
 def about(request):
     return render(request, 'about.html')
