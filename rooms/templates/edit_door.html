@@ -13,6 +13,11 @@
                 Next Door: <input type="text" name="next_room" placeholder="{{ edit_door.next_room }}" />
             </p>
             <p>
+            <p>
+                {% if errors != "" %}
+                    {{ errors.next_room }}
+                {% endif %}
+            </p>
                 Wall: <input type="number" name="wall" placeholder="{{ edit_door.wall }}" />
             </p>
             <p>
