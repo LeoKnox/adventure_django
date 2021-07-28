@@ -10,15 +10,15 @@
         <form name="room_door" action="" method="POST">
             {% csrf_token %}
             <p>
-                Next Door: <input type="text" name="next_room" placeholder="{{ edit_door.next_room }}" />
+                Next Door: <input type="text" name="next_room" placeholder="{{ edit_door.next_room }}" value={{ edit_door.next_room }} />
             </p>
             <p>
                 {{ errors.next_room }}
             </p>
-                Wall: <input type="number" name="wall" placeholder="{{ edit_door.wall }}" />
+                Wall: <input type="number" name="wall" placeholder="{{ edit_door.wall }}" value={{ edit_door.wall }}/>
             </p>
             <p>
-                Location: <input type="number" name="location" placeholder="{{ edit_door.location }} value="{{ edit_door.location }}" />
+                Location: <input type="number" name="location" placeholder={{ edit_door.location }} value={{ edit_door.location }} />
             </p>
             <p>
                 {{ errors.minimum_location }}
