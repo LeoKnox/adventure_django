@@ -13,16 +13,15 @@
                 Next Door: <input type="text" name="next_room" placeholder="{{ edit_door.next_room }}" />
             </p>
             <p>
-            <p>
-                {% if errors.next_room != "" %}
-                    {{ errors.next_room }} -
-                    {{ errors.lesser_wall }}
-                {% endif %}
+                {{ errors.next_room }}
             </p>
                 Wall: <input type="number" name="wall" placeholder="{{ edit_door.wall }}" />
             </p>
             <p>
                 Location: <input type="number" name="location" placeholder="{{ edit_door.location }}" />
+            </p>
+            <p>
+                {{ errors.minimum_location }}
             </p>
             <input type=submit value="Submit">
         </form>
