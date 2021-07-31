@@ -16,6 +16,8 @@ body {
 <h1>Edit {{ edit_room.name }} Room</h1>
 <form name="create" action= "" method="POST">
     {% csrf_token %}
+    <input type="hidden" id="id" name="id" value="{{ edit_door.id }}">
+    <p>{{ session.room_id }} id</p>
     <label>Room Name: </label>
     <input type="text" name="name" placeholder="{{ edit_room.name }}" value="{{ edit_room.name }}" />
     <br>
