@@ -56,6 +56,7 @@ def room_create(request):
 
 def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)
+    request.session['room_id'] = room_id
     shapes = Room.SHAPES
     doors = Room.objects.all()
     doors = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.values_list('next_room', flat=True)]
