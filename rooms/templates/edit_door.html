@@ -9,7 +9,8 @@
     <p>
         <form name="room_door" action="" method="POST">
             {% csrf_token %}
-            <input type="hidden" id="id" name="id" value="{{ door.id }}">
+            <input type="hidden" id="id" name="id" value="{{ edit_door.id }}">
+            <P>D: {{ door.id }}</P>
             <p>
                 Next Door: <input type="text" name="next_room" placeholder="{{ edit_door.next_room }}" value={{ edit_door.next_room }} />
             </p>
