@@ -23,6 +23,9 @@
                 Location: <input type="number" name="location" placeholder={{ edit_door.location }} value={{ edit_door.location }} />
             </p>
             <p>
+                {{ errors.maximum_location }}
+            </p>
+            <p>
                 {{ errors.minimum_location }}
             </p>
             <input type=submit value="Submit">
