@@ -25,7 +25,7 @@ class DoorManager(models.Manager):
         #if int(postData['location']) > Door.objects.get(id=postData['id']).location:
         if int(postData['location']) > Room.objects.get(id=postData['room_id']).width:
             print("error error err... ")
-            errors['maximum_location'] = postData['location'] + "Door cannot exceed length " + str(Door.objects.get(id=postData['id']).location)
+            errors['maximum_location'] = postData['location'] + "Door cannot exceed length " + str(Room.objects.get(id=postData['room_id']).width)
         return errors
 
 class Room(models.Model):
