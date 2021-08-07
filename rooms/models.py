@@ -13,6 +13,12 @@ def validate_wall(value):
 def unique_wall():
     pass
 
+class RoomManager(models.Manager):
+    def basic_validator(self, postData):
+        errors = {}
+        if postData('width') <= 0:
+            errors['width'] = "Width cannot be zero or lower."
+
 class DoorManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
@@ -26,7 +32,6 @@ class DoorManager(models.Manager):
         #room_validator.width = postData['wall']
         if Door.objects.get(id=postData['id']).wall == 0 or Door.objects.get(id=postData['id']).wall == 2:
             if int(postData['location']) > room_validator.width:
-                print("error error err... ")
                 errors['maximum_location'] = "Door cannot exceed length " + str(Room.objects.get(id=postData['room_id']).width)
         else:
             if int(postData['location']) > room_validator.height:
@@ -41,6 +46,7 @@ class Room(models.Model):
     width = models.IntegerField(validators=[validate_wall])
     height = models.IntegerField()
     doors = models.ManyToManyField('Door')
+    objects = RoomManager()
 
 class Door(models.Model):
     WALLS = [(0, 'North'), (1, 'East'), (2, 'South'), (3, 'West')]
