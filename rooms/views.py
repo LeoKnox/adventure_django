@@ -30,6 +30,7 @@ def door_edit(request):
     return redirect('room_edit', room_id)
 
 def door_add(request):
+    errors = Room.objects.basic_validator(request.POST)
     if len(errors) > 0:
         print("*******")
         print(errors)
