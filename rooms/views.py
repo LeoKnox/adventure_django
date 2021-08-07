@@ -30,6 +30,10 @@ def door_edit(request):
     return redirect('room_edit', room_id)
 
 def door_add(request):
+    if len(errors) > 0:
+        print("*******")
+        print(errors)
+        return render(request, 'room_create.html', {'errors': errors})
     add_door = Door(next_room = request.POST.get('new_door'))
     add_door.save()
     return redirect('room_create')
