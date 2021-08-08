@@ -16,8 +16,9 @@ def unique_wall():
 class RoomManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
-        if postData('width') <= 0:
+        if int(postData('width')) <= 0:
             errors['width'] = "Width cannot be zero or lower."
+        return errors
 
 class DoorManager(models.Manager):
     def basic_validator(self, postData):
