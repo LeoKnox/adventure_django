@@ -30,18 +30,18 @@ def door_edit(request):
     return redirect('room_edit', room_id)
 
 def door_add(request):
-    errors = Room.objects.basic_validator(request.POST)
-    print("!!!!!" + errors)
-    if len(errors) > 0:
-        print("*******")
-        print(errors)
-        return render(request, 'room_create.html', {'errors': errors})
     add_door = Door(next_room = request.POST.get('new_door'))
     add_door.save()
     return redirect('room_create')
 
 def room_create(request):
     if request.method == "POST":
+        errors = Room.objects.basic_validator(request.POST)
+        print("!!!!!" + errors)
+        if len(errors) > 0:
+            print("*******")
+            print(errors)
+            return render(request, 'room_create.html', {'errors': errors})
         new_room = Room()
         new_room.name = request.POST.get('name')
         new_room.description = request.POST.get('description')
