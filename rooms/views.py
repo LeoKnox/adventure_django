@@ -31,6 +31,7 @@ def door_edit(request):
 
 def door_add(request):
     errors = Room.objects.basic_validator(request.POST)
+    print("!!!!!" + errors)
     if len(errors) > 0:
         print("*******")
         print(errors)
