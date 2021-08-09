@@ -35,13 +35,14 @@ def door_add(request):
     return redirect('room_create')
 
 def room_create(request):
+    room_shapes = Room.SHAPES
     if request.method == "POST":
         errors = Room.objects.basic_validator(request.POST)
         print("!!!!!")
         if len(errors) > 0:
             print("*******")
             print(errors)
-            return render(request, 'room_create.html', {'errors': errors})
+            return render(request, 'room_create.html', {'errors': errors, 'room_shapes':room_shapes})
         new_room = Room()
         new_room.name = request.POST.get('name')
         new_room.description = request.POST.get('description')
@@ -57,7 +58,6 @@ def room_create(request):
         return redirect('home')
     doors = Door.objects.all()
     rooms = Room.objects.all()
-    room_shapes = Room.SHAPES
     return render(request, 'room_create.html', {'doors': doors, 'rooms':rooms, 'room_shapes':room_shapes})
 
 def room_edit(request, room_id):
