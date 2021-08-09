@@ -27,6 +27,7 @@
     <label>Height: </label>
     <input type="number" name="height" />
     <br>
+    <p>{{ errors.height }}</p>
     <label>Doors: </label>
     {% for door in doors %}
         {# <p>{{ door.next_room }}<input type="checkbox" name="doors" value="{{ door.next_room }}"></p> #}
