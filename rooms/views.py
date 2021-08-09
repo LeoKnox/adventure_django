@@ -40,11 +40,9 @@ def room_create(request):
     room_shapes = Room.SHAPES
     if request.method == "POST":
         errors = Room.objects.basic_validator(request.POST)
-        print("!!!!!")
+        room.name = request.POST.get('name')
         if len(errors) > 0:
-            print("*******")
-            print(errors)
-            return render(request, 'room_create.html', {'errors':errors, 'rooms':rooms, 'room_shapes':room_shapes})
+            return render(request, 'room_create.html', {'errors':errors, 'room':room, 'rooms':rooms, 'room_shapes':room_shapes})
         new_room = Room()
         new_room.name = request.POST.get('name')
         new_room.description = request.POST.get('description')
