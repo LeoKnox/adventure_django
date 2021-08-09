@@ -37,7 +37,7 @@ def door_add(request):
 def room_create(request):
     if request.method == "POST":
         errors = Room.objects.basic_validator(request.POST)
-        print("!!!!!" + errors)
+        print("!!!!!")
         if len(errors) > 0:
             print("*******")
             print(errors)
