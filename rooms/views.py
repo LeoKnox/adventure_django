@@ -39,6 +39,7 @@ def room_create(request):
     rooms = Room.objects.all()
     room_shapes = Room.SHAPES
     if request.method == "POST":
+        room = Room()
         errors = Room.objects.basic_validator(request.POST)
         room.name = request.POST.get('name')
         if len(errors) > 0:
