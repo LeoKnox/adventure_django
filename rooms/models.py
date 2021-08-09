@@ -18,8 +18,8 @@ class RoomManager(models.Manager):
         errors = {}
         if int(postData['width']) <= 0:
             errors['width'] = "Width cannot be zero or lower."
-        if int(postData['height']) < 0 or int(postData['height']) > 3:
-            errors['height'] = "Height must be betwen 0 through 3. For now."
+        if int(postData['height']) <= 0:
+            errors['height'] = "Height cannot be zero or lower."
         return errors
 
 class DoorManager(models.Manager):
