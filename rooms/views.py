@@ -102,8 +102,6 @@ def edit_door(request, door_id):
     if request.method == "POST":
         errors = Door.objects.basic_validator(request.POST)
         if len(errors) > 0:
-            print("*******")
-            print(errors)
             return render(request, 'edit_door.html', {'edit_door': edit_door, 'errors': errors})
         if request.POST.get('next_room') != "":
             edit_door.next_room = request.POST.get('next_room')
@@ -142,8 +140,6 @@ def delete_treasure(request, treasure_id):
 def edit_treasure(request, treasure_id):
     edit_treasure = Treasure.objects.get(pk = treasure_id)
     room_treasures = Room.objects.all()
-    print("888888")
-    print(room_treasures)
     if request.method == "POST":
         if request.POST.get('name') != "":
             edit_treasure.name = request.POST.get('name')
