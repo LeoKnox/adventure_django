@@ -52,8 +52,10 @@ body {
     </table>
     <br />
 {% for t in treasures %}
-    <p>Treasure name: {{ t.name }}</p>
-    <p>Description: {{ t.description }}</p>
+    <p>
+        <label class="treasure_list">Treasure name: {{ t.name }}</label>
+        <label class="treasure_list">Description: {{ t.description }}</label>
+    </p>
     <a href="{% url 'delete_treasure' t.id %}">
             Delete
     </a>
