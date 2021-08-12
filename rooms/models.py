@@ -31,13 +31,13 @@ class DoorManager(models.Manager):
             errors['minimum_location'] = "Location needs to be 1 or greater."
         room_validator = Room.objects.get(id=postData['room_id'])
         print('!!!!!!!')
-        print(int(postData['location'])-1)
+        print(room_validator.height)
         if int(postData['wall']) == 0 or int(postData['wall']) == 2:
-            if int(postData['location'])-1 > room_validator.width:
-                errors['maximum_location'] = "Door cannot exceed length " + str(room_validator.width)
+            if int(postData['location']) >= room_validator.width:
+                errors['maximum_location'] = "Door cannot exceed length " + str(room_validator.width-1)
         else:
-            if int(postData['location'])-1 > room_validator.height:
-                errors['maximum_location'] = "Door cannot exceed length " + str(room_validator.height)
+            if int(postData['location']) >= room_validator.height:
+                errors['maximum_location'] = "Door cannot exceed length " + str(room_validator.height-1)
         return errors
 
 class Room(models.Model):
