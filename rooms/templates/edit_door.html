@@ -11,7 +11,6 @@
             {% csrf_token %}
             <input type="hidden" id="id" name="id" value="{{ edit_door.id }}">
             <input type="hidden" id="room_id" name="room_id" value="{{ request.session.room_id }}">
-            <P>D: {{ edit_door.id }} ID:{{ request.session.room_id }}</P>
             <p>
                 Next Door: <input type="text" name="next_room" placeholder="{{ edit_door.next_room }}" value={{ edit_door.next_room }} />
             </p>
