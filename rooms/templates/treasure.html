@@ -10,9 +10,9 @@
 <form name="delete_treasure" action="" method="POST">
     {% csrf_token %}
     <p>
+        <b>Room:</b> {{ t.room.name }}
         <b>Treasure Name:</b> {{ t.name }}
-        <b>Tresure Description:</b> {{ t.description }}
-        <b>Room:</b> {{ t.room.name }}&ensp;
+        <b>Tresure Description:</b> {{ t.description }}&ensp;
         <a href="{% url 'edit_treasure' t.id %}">
                 Assign&ensp;
         </a>
