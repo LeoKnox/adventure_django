@@ -124,7 +124,7 @@ def edit_delete(request, door_id, room_id):
     return redirect('room_edit', room_id)
 
 def treasure(request):
-    room_treasure = Treasure.objects.all()
+    room_treasure = Treasure.objects.all().order_by("room")
     rooms = Room.objects.all()
     if request.method == "POST":
         new_treasure = Treasure.objects.create()
