@@ -13,6 +13,12 @@ def validate_wall(value):
 def unique_wall():
     pass
 
+class TreasureManager(models.Manager):
+    def basic_validator(self, postData):
+        errors = {}
+        if int(postData['name'] < 5):
+            errors['name'] = "Name must be 5 characters or higher"
+
 class RoomManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
@@ -67,3 +73,4 @@ class Treasure(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
     room = models.ForeignKey(Room, on_delete=models.CASCADE, null=True)
+    objects = TreasureManager()
