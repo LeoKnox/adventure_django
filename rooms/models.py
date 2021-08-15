@@ -16,7 +16,7 @@ def unique_wall():
 class TreasureManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
-        if int(postData['treasure_name'] < 5):
+        if len(postData['treasure_name']) < 5:
             errors['treasure_name'] = "Name must be 5 characters or higher"
         return errors
 
