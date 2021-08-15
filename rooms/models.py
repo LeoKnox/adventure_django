@@ -17,7 +17,7 @@ class TreasureManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
         if len(postData['treasure_name']) < 5:
-            errors['treasure_name'] = "Name must be 5 characters or higher"
+            errors['treasure_name'] = "Name must be 5 characters or more."
         return errors
 
 class RoomManager(models.Manager):

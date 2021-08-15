@@ -129,7 +129,7 @@ def treasure(request):
     if request.method == "POST":
         errors = Treasure.objects.basic_validator(request.POST)
         if len(errors) > 0:
-            return render(request, 'room_create.html', {'room_treasure': room_treasure, 'rooms': rooms, 'errors': errors})
+            return render(request, 'treasure.html', {'room_treasure': room_treasure, 'rooms': rooms, 'errors': errors})
         new_treasure = Treasure.objects.create()
         new_treasure.name = request.POST.get('treasure_name')
         new_treasure.description = request.POST.get('treasure_description')
