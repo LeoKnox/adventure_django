@@ -39,7 +39,7 @@ class DoorManager(models.Manager):
         room_validator = Room.objects.get(id=postData['room_id'])
         #if postData['wall'] in room_validator.doors['wall']:
         #    print('wall!')
-        for postData['wall'] in Room.objects.get(id=postData['room_id']).wall:
+        for postData['wall'] in Room.objects.get(id=postData['room_id']).doors.wall:
             print('wow!')
         if int(postData['wall']) == 0 or int(postData['wall']) == 2:
             if int(postData['location']) >= room_validator.width:
