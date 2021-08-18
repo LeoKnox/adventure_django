@@ -41,7 +41,7 @@ class DoorManager(models.Manager):
         #    print('wall!')
         x = Door.objects.filter(id=postData['id'])
         print("iiiiiiiiiiii")
-        print(x['wall'])
+        print(x.wall)
         if int(postData['wall']) == 0 or int(postData['wall']) == 2:
             if int(postData['location']) >= room_validator.width:
                 errors['maximum_location'] = "Door cannot exceed length " + str(room_validator.width-1)
