@@ -9,14 +9,16 @@
 {% for t in room_treasure %}
 <form name="delete_treasure" action="" method="POST">
     {% csrf_token %}
-    <p><input type="text" name="name" placeholder="{{ t.name }}" /> : <input type="text" name="description" placeholder="{{ t.description }}" />
+    <p>
+        <b>Room:</b> {{ t.room.name }}
+        <b>Treasure Name:</b> {{ t.name }}
+        <b>Tresure Description:</b> {{ t.description }}&ensp;
         <a href="{% url 'edit_treasure' t.id %}">
-                Assign:{{ t.id }}
+                Assign&ensp;
         </a>
         <a href="{% url 'delete_treasure' t.id %}">
                 Delete
         </a>
-        <label>{{ t.room.name }}</label>
     </p>
 </form>
 {% endfor %}
@@ -25,6 +27,7 @@
     <p>
         <label>Name:</label>
         <input type="text" name="treasure_name">
+        <p>{{ errors.treasure_name }}</p>
     </p>
     <p>
         <label>Description:</label>
@@ -32,7 +35,7 @@
     </p>
     <select name="t_room_name" id="t_room_name">
         {% for t_room in rooms %}
-            <option value="{{ t_room.name }}">{{t_room.name}}</option>
+            <option value="{{ t_room.id }}">{{t_room.name}}</option>
         {% endfor %}
     </select>
     <input type=submit value="Submit">

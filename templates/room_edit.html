@@ -16,6 +16,7 @@ body {
 <h1>Edit {{ edit_room.name }} Room</h1>
 <form name="create" action= "" method="POST">
     {% csrf_token %}
+    <input type="hidden" id="id" name="id" value="{{ request.session.room_id }}">
     <label>Room Name: </label>
     <input type="text" name="name" placeholder="{{ edit_room.name }}" value="{{ edit_room.name }}" />
     <br>
@@ -51,8 +52,13 @@ body {
     </table>
     <br />
 {% for t in treasures %}
-    <p>Treasure name: {{ t.name }}</p>
-    <p>Description: {{ t.description }}</p>
+    <p>
+        <label class="treasure_list">Treasure name: {{ t.name }}</label>
+        <label class="treasure_list">Description: {{ t.description }}</label>
+    </p>
+    <a href="{% url 'delete_treasure' t.id %}">
+            Delete
+    </a>
     <br>
 {% endfor %}
 {% for d in doors %}

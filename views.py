@@ -25,7 +25,6 @@ def room_delete(request, room_id):
 
 def door_edit(request):
     add_door = Door(next_room = request.POST.get('new_door'))
-    print(add_door)
     add_door.save()
     room_id = request.POST.get('room_id')
     return redirect('room_edit', room_id)
@@ -36,7 +35,16 @@ def door_add(request):
     return redirect('room_create')
 
 def room_create(request):
+    doors = Door.objects.all()
+    rooms = Room.objects.all()
+    room_shapes = Room.SHAPES
     if request.method == "POST":
+        room = Room()
+        errors = Room.objects.basic_validator(request.POST)
+        room.name = request.POST.get('name')
+        if len(errors) > 0:
+            return render(request, 'room_create.html', {'errors':errors, 'room':room, 'rooms':rooms, 'room_shapes':room_shapes})
+        new_room = Room()
         new_room.name = request.POST.get('name')
         new_room.description = request.POST.get('description')
         new_room.shape = request.POST.get('shape')
@@ -49,19 +57,16 @@ def room_create(request):
             single_door.save()
             new_room.doors.add(single_door)
         return redirect('home')
-    doors = Door.objects.all()
-    rooms = Room.objects.all()
-    room_shapes = Room.SHAPES
     return render(request, 'room_create.html', {'doors': doors, 'rooms':rooms, 'room_shapes':room_shapes})
 
 def room_edit(request, room_id):
     edit_room = Room.objects.get(pk = room_id)
+    request.session['room_id'] = room_id
     shapes = Room.SHAPES
     doors = Room.objects.all()
     doors = [val for val in Room.objects.values_list('name', flat=True) if val not in edit_room.doors.values_list('next_room', flat=True)]
     doors = Room.objects.filter(name__in = doors)
-    treasures = Treasure.objects.filter(room = 1)
-    print(treasures[0].name)
+    treasures = Treasure.objects.filter(room = room_id)
     if request.method == "POST":
         if request.POST.get('name') != "":
             edit_room.name = request.POST.get('name')
@@ -95,6 +100,9 @@ def room_edit(request, room_id):
 def edit_door(request, door_id):
     edit_door = Door.objects.get(id = door_id)
     if request.method == "POST":
+        errors = Door.objects.basic_validator(request.POST)
+        if len(errors) > 0:
+            return render(request, 'edit_door.html', {'edit_door': edit_door, 'errors': errors})
         if request.POST.get('next_room') != "":
             edit_door.next_room = request.POST.get('next_room')
         if request.POST.get('wall') != "":
@@ -116,13 +124,15 @@ def edit_delete(request, door_id, room_id):
     return redirect('room_edit', room_id)
 
 def treasure(request):
-    room_treasure = Treasure.objects.all()
+    room_treasure = Treasure.objects.all().order_by("room")
     rooms = Room.objects.all()
     if request.method == "POST":
+        errors = Treasure.objects.basic_validator(request.POST)
+        if len(errors) > 0:
+            return render(request, 'treasure.html', {'room_treasure': room_treasure, 'rooms': rooms, 'errors': errors})
         new_treasure = Treasure.objects.create()
         new_treasure.name = request.POST.get('treasure_name')
         new_treasure.description = request.POST.get('treasure_description')
-        new_treasure.room_id = request.POST.get('t_room_id')
         new_treasure.save()
     return render(request, 'treasure.html', {'room_treasure': room_treasure, 'rooms': rooms})
 
@@ -132,14 +142,26 @@ def delete_treasure(request, treasure_id):
 
 def edit_treasure(request, treasure_id):
     edit_treasure = Treasure.objects.get(pk = treasure_id)
-    room_treasures = room.Room.all()
+    room_treasures = Room.objects.all()
+    print("@@@@@@@ edit treasure")
     if request.method == "POST":
         if request.POST.get('name') != "":
             edit_treasure.name = request.POST.get('name')
         if request.POST.get('description') != "":
             edit_treasure.description = request.POST.get('description')
-        edit_treasure.save()
-    return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure})
+        new_doors = request.POST.getlist('new_doors')
+        for nd in new_doors:
+            print("##### " + edit_treasure.name)
+            new_treasure = Treasure()
+            new_treasure.name = edit_treasure.name
+            new_treasure.description = edit_treasure.description
+            new_treasure.room_id = nd
+            print("%%%%%%%")
+            print(new_treasure)
+            new_treasure.save()
+        return redirect('treasure')
+    return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure, 'room_treasures':room_treasures})
 
 def assign_treasure(request):
+    print("!!!!!! assign treasure")
     return render(request, 'home.html')

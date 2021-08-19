@@ -14,10 +14,18 @@
     <label>Treasure Description: </label>
     <input type="text" name="description" placeholder={{ edit_treasure.description }} >
     <br>
-    {% for room in room_treasures.room %}
-        <p>{{ room.name }}</p>
+    <dl>
+    <dd>Rooms treasure are found in</dd>
+    {% for treasure in room_treasures %}
+        <dt>{{ treasure.name }}
+            <a href="">Remove from room</a>
+        </dt>
     {% endfor %}
-    <button>Submit</button>
+    </dl>
+    {% for room in room_treasures %}
+         <p>{{ room.name }}<input type="checkbox" name="new_doors" value="{{ room.id }}"></p>
+    {% endfor %}
+    <button>Add treasure to rooms</button>
 </form>
 </form>
 {% endblock %}
