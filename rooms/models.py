@@ -41,7 +41,7 @@ class DoorManager(models.Manager):
         #    print('wall!')
         x = Door.objects.get(id=postData['id'])
         print("aaaaaa")
-        print(x.wall)
+        print(str(x.wall) + ":" + str(postData['wall']))
         if x.wall == postData['wall'] and x.location == postData['location']:
             print("bbbbb")
         if postData['wall'] == 0 or postData['wall'] == 2:
