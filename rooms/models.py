@@ -37,9 +37,11 @@ class DoorManager(models.Manager):
         if int(postData['location']) < 1:
             errors['minimum_location'] = "Location needs to be 1 or greater."
         room_validator = Room.objects.get(id=postData['room_id'])
+        y = room_validator.doors.all()
         x = Door.objects.get(id = postData['id'])
         print("aaaaaa")
-        print(x.wall)
+        for z in y:
+            print(z.wall)
         if int(postData['wall']) == x.wall and int(postData['location']) == x.location:
             print("bbbb")
         if postData['wall'] == 0 or postData['wall'] == 2:
