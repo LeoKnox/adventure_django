@@ -41,8 +41,8 @@ class DoorManager(models.Manager):
         x = Door.objects.get(id = postData['id'])
         print("aaaaaa")
         for z in y:
-            if z.wall == int(postData['wall']) and z.location == int(postData['location']):
-                print('ccccc')
+            if z.id != int(postData['id']) and z.wall == int(postData['wall']) and z.location == int(postData['location']):
+                errors['duplicate_door'] = "Cannot have 2 doors in same location."
         if int(postData['wall']) == x.wall and int(postData['location']) == x.location:
             print("bbbb")
         if postData['wall'] == 0 or postData['wall'] == 2:
