@@ -42,7 +42,7 @@ body {
     {% for door in edit_room.doors.all %}
         <tr>
             <input type="hidden" name="doors" value="{{ door.id }}">
-            <td>{{ door.next_room }}</td>
+            <td><input type="text" id="next_room" value="{{ door.next_room }}" readonly></td>
             <td><input type="integer" name="doors" value= "{{ door.wall }}" /></td>
             <td><input type="integer" name="doors" value= "{{ door.location }}" /></td>
             <td><button><a href="{% url 'edit_door' door.id %}">Edit</a></button></td>
