@@ -39,12 +39,9 @@ class DoorManager(models.Manager):
         room_validator = Room.objects.get(id=postData['room_id'])
         y = room_validator.doors.all()
         x = Door.objects.get(id = postData['id'])
-        print("aaaaaa")
         for z in y:
             if z.id != int(postData['id']) and z.wall == int(postData['wall']) and z.location == int(postData['location']):
                 errors['duplicate_door'] = "Cannot have 2 doors in same location."
-        if int(postData['wall']) == x.wall and int(postData['location']) == x.location:
-            print("bbbb")
         if postData['wall'] == 0 or postData['wall'] == 2:
             if int(postData['location']) >= room_validator.width:
                 errors['maximum_location'] = "Door cannot exceed length " + str(room_validator.width-1)
