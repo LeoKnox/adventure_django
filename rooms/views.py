@@ -68,7 +68,7 @@ def room_edit(request, room_id):
     doors = Room.objects.filter(name__in = doors)
     treasures = Treasure.objects.filter(room = room_id)
     if request.method == "POST":
-        errors = Door.objects.basic_validator(request.POST)
+        errors = Room.objects.basic_validator(request.POST)
         if len(errors) > 0:
 #            print(len(errors))
             return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors, 'treasures':treasures, 'errors': errors})
