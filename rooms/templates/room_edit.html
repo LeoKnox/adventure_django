@@ -27,10 +27,10 @@ body {
     <input type="text" name="shape" placeholder="{{edit_room.shape }}" />
     <br>
     <label>Width: </label>
-    <input type="number" name="width" placeholder="{{edit_room.width }}" />
+    <input type="number" name="width" placeholder={{edit_room.width }} value={{edit_room.wdth}} />
     <p>{{ errors.width }}</p>
     <label>Height: </label>
-    <input type="number" name="height" placeholder="{{ edit_room.height }}" />
+    <input type="number" name="height" placeholder={{ edit_room.height }} value={{edit_room.height}} />
     <br>
     <table>
         <tr>
