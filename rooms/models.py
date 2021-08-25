@@ -25,8 +25,8 @@ class RoomManager(models.Manager):
         errors = {}
         print("*******")
         print(postData['height'])
-        #if int(postData['width']) <= 0:
-        #    errors['width'] = "Width cannot be zero or lower."
+        if int(postData['width']) <= 0:
+            errors['width'] = "Width cannot be zero or lower."
         if int(postData['height']) <= 0:
             errors['height'] = "Height cannot be zero or lower."
         return errors
