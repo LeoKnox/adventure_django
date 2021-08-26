@@ -19,6 +19,16 @@
         <td>{{ t.room.name }}</td>
         <td>{{ t.name }}</td>
         <td>{{ t.description }}</td>
+        <td>
+        <a href="{% url 'edit_treasure' t.id %}">
+                Assign&ensp;
+        </a>
+        </td>
+        <td>
+        <a href="{% url 'delete_treasure' t.id %}">
+                Delete
+        </a>
+        </td>
     </tr>
     {% endfor %}
 </table>
