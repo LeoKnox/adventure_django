@@ -6,6 +6,22 @@
 {% block content %}
 <h1>Treasure</h1>
 <p>Add treasure to your room</p>
+<table>
+    <tr>
+        <th>Room</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Assign</th>
+        <th>Delete</th>
+    </tr>
+    {% for t in room_treasure %}
+    <tr>
+        <td>{{ t.room.name }}</td>
+        <td>{{ t.name }}</td>
+        <td>{{ t.description }}</td>
+    </tr>
+    {% endfor %}
+</table>
 {% for t in room_treasure %}
 <form name="delete_treasure" action="" method="POST">
     {% csrf_token %}
