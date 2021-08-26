@@ -32,22 +32,6 @@
     </tr>
     {% endfor %}
 </table>
-{% for t in room_treasure %}
-<form name="delete_treasure" action="" method="POST">
-    {% csrf_token %}
-    <p>
-        <b>Room:</b> {{ t.room.name }}
-        <b>Treasure Name:</b> {{ t.name }}
-        <b>Tresure Description:</b> {{ t.description }}&ensp;
-        <a href="{% url 'edit_treasure' t.id %}">
-                Assign&ensp;
-        </a>
-        <a href="{% url 'delete_treasure' t.id %}">
-                Delete
-        </a>
-    </p>
-</form>
-{% endfor %}
 <form name="treaure" action= "" method="POST">
     {% csrf_token %}
     <p>
