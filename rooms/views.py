@@ -137,10 +137,10 @@ def treasure(request):
         new_treasure.name = request.POST.get('treasure_name')
         new_treasure.description = request.POST.get('treasure_description')
         t_rooms = request.POST.getlist('treasure_room')
-        print(t_rooms[1])
-        t_room = Room.objects.get(id=1)
-        new_treasure.room_id = t_room
-        new_treasure.save()
+        for t_room in t_rooms:
+            tr = Room.objects.get(id=request.POST.get('room_id'))
+            new_treasure.room_id = tr
+            new_treasure.save()
     return render(request, 'treasure.html', {'room_treasure': room_treasure, 'rooms': rooms})
 
 def delete_treasure(request, treasure_id):
