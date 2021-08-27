@@ -136,7 +136,7 @@ def treasure(request):
         new_treasure = Treasure.objects.create()
         new_treasure.name = request.POST.get('treasure_name')
         new_treasure.description = request.POST.get('treasure_description')
-        new_treasure.room = request.POST.get('treasure_room')
+        new_treasure.room = 1
         new_treasure.save()
     return render(request, 'treasure.html', {'room_treasure': room_treasure, 'rooms': rooms})
 
