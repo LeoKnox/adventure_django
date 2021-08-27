@@ -43,14 +43,11 @@
         <label>Description:</label>
         <input type="text" name="treasure_description">
     </p>
-</form>
-<form name="assign_treasure" action="" method="POST">
-    {% csrf_token %}
     {% for room in rooms %}
         <p>
             <input type="hidden" name="room_id" value="{{ room.id }}">
             Add Room: {{ room.name }}
-                <input type="checkbox" name="treasure_name" value="{{ room.name }}" />
+                <input type="checkbox" name="treasure_room" value="{{ room.name }}" />
             <input type="hidden" name="treasure_description" value="{{ room.description }}">
         </p>
     {% endfor %}
