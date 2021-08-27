@@ -47,7 +47,7 @@
         <p>
             <input type="hidden" name="room_id" value="{{ room.id }}">
             Add Room: {{ room.name }}
-                <input type="checkbox" name="treasure_room" value="{{ room.name }}" />
+                <input type="checkbox" name="treasure_room" value="{{ room.id }}" />
             <input type="hidden" name="treasure_description" value="{{ room.description }}">
         </p>
     {% endfor %}

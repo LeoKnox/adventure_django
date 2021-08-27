@@ -137,9 +137,9 @@ def treasure(request):
         new_treasure.name = request.POST.get('treasure_name')
         new_treasure.description = request.POST.get('treasure_description')
         t_rooms = request.POST.getlist('treasure_room')
-        print (t_rooms)
+        print (t_rooms[0])
         for t_room in t_rooms:
-            tr = Room.objects.get(name=t_room)
+            tr = Room.objects.get(id=t_room)
             print(tr)
             new_treasure.room_id = tr
             new_treasure.save()
