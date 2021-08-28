@@ -138,12 +138,8 @@ def treasure(request):
             new_treasure = Treasure.objects.create()
             new_treasure.name = request.POST.get('treasure_name')
             new_treasure.description = request.POST.get('treasure_description')
-            print ("!!!!!!!!!")
-            print (t_room)
             tr = Room.objects.get(id=t_room)
-            print(tr)
             new_treasure.room_id = tr
-            print(new_treasure.name)
             new_treasure.save()
     return render(request, 'treasure.html', {'room_treasure': room_treasure, 'rooms': rooms})
 
