@@ -22,6 +22,7 @@
         </dt>
     {% endfor %}
     </dl>
+    {{ errors.add_room }}
     {% for room in room_treasures %}
          <p>{{ room.name }}<input type="checkbox" name="new_doors" value="{{ room.id }}"></p>
     {% endfor %}
