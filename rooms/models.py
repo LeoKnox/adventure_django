@@ -23,9 +23,13 @@ class TreasureManager(models.Manager):
 class RoomManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
-        if int(postData['width']) <= 0 or postData['width'] == "":
+        if postData['width'] == "":
+            errors['width'] = "Please enter width."
+        elif int(postData['width']) <= 0:
             errors['width'] = "Width cannot be zero or lower."
-        if int(postData['height']) <= 0:
+        if postData['height'] == "":
+            errors['height'] = "Please enter height."
+        elif int(postData['height']) <= 0:
             errors['height'] = "Height cannot be zero or lower."
         return errors
 
