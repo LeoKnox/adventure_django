@@ -31,6 +31,8 @@ class RoomManager(models.Manager):
             errors['height'] = "Please enter height."
         elif int(postData['height']) <= 0:
             errors['height'] = "Height cannot be zero or lower."
+        if len(postData['name']) > 2:
+            errors['name'] = "Room name must be at least 3 characters."
         return errors
 
 class DoorManager(models.Manager):
