@@ -43,7 +43,9 @@
         <label>Description:</label>
         <input type="text" name="treasure_description">
     </p>
-    {{ errors.add_room }}
+    <p>
+        {{ errors.add_room }}
+    </p>
     {% for room in rooms %}
         <p>
             <input type="hidden" name="room_id" value="{{ room.id }}">
