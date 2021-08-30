@@ -28,10 +28,14 @@ body {
     <br>
     <label>Width: </label>
     <input type="number" name="width" placeholder={{edit_room.width }} value={{edit_room.width}} />
-    <p>{{ errors.width }}</p>
+    <p class="error_msg">
+        {{ errors.width }}
+    </p>
     <label>Height: </label>
     <input type="number" name="height" placeholder={{ edit_room.height }} value={{edit_room.height}} />
-    <p>{{ errors.width }}</p>
+    <p class="error_msg">
+        {{ errors.width }}
+    </p>
     <table>
         <tr>
             <th>Door</th>
@@ -50,7 +54,7 @@ body {
         </tr>
     {% endfor %}
     </table>
-    <p>
+    <p class="error_msg">
         {{ errors.minimum_location }}
     </p>
     <br />

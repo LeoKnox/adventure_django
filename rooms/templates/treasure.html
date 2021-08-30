@@ -37,13 +37,15 @@
     <p>
         <label>Name:</label>
         <input type="text" name="treasure_name">
-        <p class="error_msg">{{ errors.treasure_name }}</p>
+        <p class="error_msg">
+            {{ errors.treasure_name }}
+        </p>
     </p>
     <p>
         <label>Description:</label>
         <input type="text" name="treasure_description">
     </p>
-    <p>
+    <p class="error_msg">
         {{ errors.add_room }}
     </p>
     {% for room in rooms %}

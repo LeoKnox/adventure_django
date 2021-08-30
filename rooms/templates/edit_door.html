@@ -14,7 +14,7 @@
             <p>
                 Next Door: <input type="text" name="next_room" placeholder="{{ edit_door.next_room }}" value={{ edit_door.next_room }} />
             </p>
-            <p>
+            <p class="error_msg">
                 {{ errors.next_room }}
             </p>
                 Wall: <input type="number" name="wall" placeholder={{ edit_door.wall }} value={{ edit_door.wall }} />
@@ -22,10 +22,10 @@
             <p>
                 Location: <input type="number" name="location" placeholder={{ edit_door.location }} value={{ edit_door.location }} />
             </p>
-            <p>
+            <p class="error_msg">
                 {{ errors.maximum_location }}
             </p>
-            <p>
+            <p class="error_msg">
                 {{ errors.duplicate_door }}
             </p>
             <input type=submit value="Submit">
