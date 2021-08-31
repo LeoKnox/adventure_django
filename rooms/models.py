@@ -24,7 +24,7 @@ class RoomManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
         print (postData['width'].isnumeric())
-        if not postData['width'].isnumeric():
+        if not postData['width'].isnumeric() or not postData['height'].isnumeric():
             errors['alphabet'] = "Please enter a character."
         if postData['width'] == "":
             errors['width'] = "Please enter width."
@@ -32,7 +32,7 @@ class RoomManager(models.Manager):
             errors['width'] = "Width cannot be zero or lower."
         if postData['height'] == "":
             errors['height'] = "Please enter height."
-        elif int(postData['height']) <= 0:
+        elif postData['height'].isnumeric() and int(postData['height']) <= 0:
             errors['height'] = "Height cannot be zero or lower."
         if len(postData['name']) > 2:
             errors['name'] = "Room name must be at least 3 characters."
