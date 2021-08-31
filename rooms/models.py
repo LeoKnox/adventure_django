@@ -38,7 +38,7 @@ class RoomManager(models.Manager):
 class DoorManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
-        if postData['wall'].isnumeric():
+        if postData['wall'].isnumeric() != True:
             print('Wonder Wall! ********')
         if len(postData.get('next_room')) < 2:
             errors['next_room'] = "Door name should be more then 2 characters"
