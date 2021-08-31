@@ -22,6 +22,14 @@
         </dt>
     {% endfor %}
     </dl>
+    <ul>
+        {% for treasure in room_treasures %}
+        <li>
+            {{ treasure.name }}
+            <a href="">Remove from room</a>
+        </li>
+        {% endfor %}
+    </ul>
     {% for room in room_treasures %}
          <p>{{ room.name }}<input type="checkbox" name="new_doors" value="{{ room.id }}"></p>
     {% endfor %}
