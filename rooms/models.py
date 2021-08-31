@@ -23,9 +23,12 @@ class TreasureManager(models.Manager):
 class RoomManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
+        print (postData['width'].isnumeric())
+        if not postData['width'].isnumeric():
+            errors['alphabet'] = "Please enter a character."
         if postData['width'] == "":
             errors['width'] = "Please enter width."
-        elif int(postData['width']) <= 0:
+        elif postData['width'].isnumeric() and int(postData['width']) <= 0:
             errors['width'] = "Width cannot be zero or lower."
         if postData['height'] == "":
             errors['height'] = "Please enter height."
@@ -38,8 +41,6 @@ class RoomManager(models.Manager):
 class DoorManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
-        if postData['wall'].isnumeric() != True:
-            print('Wonder Wall! ********')
         if len(postData.get('next_room')) < 2:
             errors['next_room'] = "Door name should be more then 2 characters"
         if int(postData['location']) < 1:
