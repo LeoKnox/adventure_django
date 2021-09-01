@@ -25,9 +25,11 @@
     <ul>
         {% for treasure in room_treasures %}
         <li>
-            {{ treasure.name }}
+            <label class="treasure_name">
+                {{ treasure.name }}
+            </label>
             <a href="" class="delete_button">Remove from room</a>
-        </li>
+        </li><br>
         {% endfor %}
     </ul>
     {% for room in room_treasures %}
