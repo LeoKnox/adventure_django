@@ -28,7 +28,7 @@
             <label class="treasure_name">
                 {{ treasure.name }}
             </label>
-            <a href="" class="delete_button">Remove from room</a>
+            <a href="{% url 'delete_treasure' treasure.id %}" class="delete_button">Remove from room</a>
         </li><br>
         {% endfor %}
     </ul>
