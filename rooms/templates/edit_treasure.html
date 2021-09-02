@@ -23,10 +23,10 @@
     {% endfor %}
     </dl>
     <ul>
-        {% for treasure in room_treasures %}
+        {% for treasure in treasure_rooms %}
         <li>
             <label class="treasure_name">
-                {{ treasure.name }}
+                {{ treasure.room_id }}
             </label>
             <a href="{% url 'delete_treasure' treasure.id %}" class="delete_button">Remove from room</a>
         </li><br>

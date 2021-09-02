@@ -152,6 +152,9 @@ def delete_treasure(request, treasure_id):
 def edit_treasure(request, treasure_id):
     edit_treasure = Treasure.objects.get(pk = treasure_id)
     print(edit_treasure.id)
+    treasure_rooms = Treasure.objects.all().filter(name=edit_treasure.name)
+    print("====")
+    print(treasure_rooms)
     room_treasures = Room.objects.all()
     if request.method == "POST":
         if request.POST.get('name') != "":
@@ -166,7 +169,7 @@ def edit_treasure(request, treasure_id):
             new_treasure.room_id = nd
             new_treasure.save()
         return redirect('treasure')
-    return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure, 'room_treasures':room_treasures})
+    return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure, 'room_treasures':room_treasures, 'treasure_rooms':treasure_rooms})
 
 def assign_treasure(request):
     return render(request, 'home.html')
