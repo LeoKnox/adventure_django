@@ -152,7 +152,7 @@ def delete_treasure(request, treasure_id):
 def edit_treasure(request, treasure_id):
     edit_treasure = Treasure.objects.get(pk = treasure_id)
     print(edit_treasure.id)
-    treasure_rooms = Treasure.objects.all().filter(name=edit_treasure.name)
+    treasure_rooms = Treasure.objects.filter(name=edit_treasure.name).values_list('id', flat=True)
     print("====")
     print(treasure_rooms)
     room_treasures = Room.objects.all()
