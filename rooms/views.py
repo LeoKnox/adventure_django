@@ -153,7 +153,8 @@ def edit_treasure(request, treasure_id):
     edit_treasure = Treasure.objects.get(pk = treasure_id)
     print(edit_treasure.id)
     #treasure_rooms = Treasure.objects.filter(name=edit_treasure.name)
-    treasure_rooms = Treasure._meta.get_field('name').rel.to
+    treasure_rooms = Treasure.objects.get(pk = treasure_id)
+    treasure_rooms.room._meta.get_field('name').remote_field.model.__name__
     print("====")
     print(treasure_rooms)
     room_treasures = Room.objects.all()
