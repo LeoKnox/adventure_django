@@ -24,12 +24,14 @@
     </dl>
     <ul>
         {% for treasure in treasure_rooms %}
-        <li>
-            <label class="treasure_name">
-                {{ treasure.room_id }}
-            </label>
-            <a href="{% url 'delete_treasure' treasure.id %}" class="delete_button">Remove from room</a>
-        </li><br>
+            {% for t in treasure.room %}
+            <li>
+                <label class="treasure_name">
+                    {{ t.name }}
+                </label>
+                <a href="{% url 'delete_treasure' treasure.id %}" class="delete_button">Remove from room</a>
+            </li><br>
+            {% endfor %}
         {% endfor %}
     </ul>
     {% for room in room_treasures %}
