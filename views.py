@@ -68,6 +68,9 @@ def room_edit(request, room_id):
     doors = Room.objects.filter(name__in = doors)
     treasures = Treasure.objects.filter(room = room_id)
     if request.method == "POST":
+        errors = Room.objects.basic_validator(request.POST)
+        if len(errors) > 0:
+            return render(request, 'room_edit.html', {'edit_room': edit_room, 'doors':doors, 'treasures':treasures, 'errors': errors})
         if request.POST.get('name') != "":
             edit_room.name = request.POST.get('name')
         if request.POST.get('description') != "":
@@ -128,12 +131,18 @@ def treasure(request):
     rooms = Room.objects.all()
     if request.method == "POST":
         errors = Treasure.objects.basic_validator(request.POST)
+        t_rooms = request.POST.getlist('treasure_room')
+        if len(t_rooms) < 1:
+            errors['add_room'] = "Please select one room to add."
         if len(errors) > 0:
             return render(request, 'treasure.html', {'room_treasure': room_treasure, 'rooms': rooms, 'errors': errors})
-        new_treasure = Treasure.objects.create()
-        new_treasure.name = request.POST.get('treasure_name')
-        new_treasure.description = request.POST.get('treasure_description')
-        new_treasure.save()
+        for t_room in t_rooms:
+            new_treasure = Treasure.objects.create()
+            new_treasure.name = request.POST.get('treasure_name')
+            new_treasure.description = request.POST.get('treasure_description')
+            tr = Room.objects.get(id=t_room)
+            new_treasure.room_id = tr
+            new_treasure.save()
     return render(request, 'treasure.html', {'room_treasure': room_treasure, 'rooms': rooms})
 
 def delete_treasure(request, treasure_id):
@@ -142,8 +151,13 @@ def delete_treasure(request, treasure_id):
 
 def edit_treasure(request, treasure_id):
     edit_treasure = Treasure.objects.get(pk = treasure_id)
-    room_treasures = Room.objects.all()
-    print("@@@@@@@ edit treasure")
+    print(edit_treasure.id)
+    #treasure_rooms = Treasure.objects.filter(name=edit_treasure.name)
+    treasure_rooms = Treasure.objects.get(pk = treasure_id)
+    #treasure_rooms.room._meta.get_field('name').remote_field.model.__name__
+    room_treasures = Treasure.objects.filter(room_id = treasure_id)
+    print("====")
+    print(room_treasures)
     if request.method == "POST":
         if request.POST.get('name') != "":
             edit_treasure.name = request.POST.get('name')
@@ -151,17 +165,13 @@ def edit_treasure(request, treasure_id):
             edit_treasure.description = request.POST.get('description')
         new_doors = request.POST.getlist('new_doors')
         for nd in new_doors:
-            print("##### " + edit_treasure.name)
             new_treasure = Treasure()
             new_treasure.name = edit_treasure.name
             new_treasure.description = edit_treasure.description
             new_treasure.room_id = nd
-            print("%%%%%%%")
-            print(new_treasure)
             new_treasure.save()
         return redirect('treasure')
-    return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure, 'room_treasures':room_treasures})
+    return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure, 'room_treasures':room_treasures, 'treasure_rooms':treasure_rooms})
 
 def assign_treasure(request):
-    print("!!!!!! assign treasure")
     return render(request, 'home.html')

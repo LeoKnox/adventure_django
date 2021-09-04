@@ -6,47 +6,53 @@
 {% block content %}
 <h1>Treasure</h1>
 <p>Add treasure to your room</p>
-{% for t in room_treasure %}
-<form name="delete_treasure" action="" method="POST">
-    {% csrf_token %}
-    <p>
-        <b>Room:</b> {{ t.room.name }}
-        <b>Treasure Name:</b> {{ t.name }}
-        <b>Tresure Description:</b> {{ t.description }}&ensp;
+<table>
+    <tr>
+        <th>Room</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Assign</th>
+        <th>Delete</th>
+    </tr>
+    {% for t in room_treasure %}
+    <tr>
+        <td>{{ t.room.name }}</td>
+        <td>{{ t.name }}</td>
+        <td>{{ t.description }}</td>
+        <td>
         <a href="{% url 'edit_treasure' t.id %}">
                 Assign&ensp;
         </a>
+        </td>
+        <td>
         <a href="{% url 'delete_treasure' t.id %}">
                 Delete
         </a>
-    </p>
-</form>
-{% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 <form name="treaure" action= "" method="POST">
     {% csrf_token %}
     <p>
         <label>Name:</label>
         <input type="text" name="treasure_name">
-        <p>{{ errors.treasure_name }}</p>
+        <p class="error_msg">
+            {{ errors.treasure_name }}
+        </p>
     </p>
     <p>
         <label>Description:</label>
         <input type="text" name="treasure_description">
     </p>
-    <select name="t_room_name" id="t_room_name">
-        {% for t_room in rooms %}
-            <option value="{{ t_room.id }}">{{t_room.name}}</option>
-        {% endfor %}
-    </select>
-    <input type=submit value="Submit">
-</form>
-<form name="assign_treasure" action="" method="POST">
-    {% csrf_token %}
+    <p class="error_msg">
+        {{ errors.add_room }}
+    </p>
     {% for room in rooms %}
         <p>
             <input type="hidden" name="room_id" value="{{ room.id }}">
             Add Room: {{ room.name }}
-                <input type="checkbox" name="treasure_name" value="{{ room.name }}" />
+                <input type="checkbox" name="treasure_room" value="{{ room.id }}" />
             <input type="hidden" name="treasure_description" value="{{ room.description }}">
         </p>
     {% endfor %}

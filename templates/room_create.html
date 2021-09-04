@@ -9,7 +9,9 @@
     {% csrf_token %}
     <label>Room Name: </label>
     <input type="text" name="name" value="{{ room.name }}" />
-    <br>
+    <p class="error_msg">
+        {{ errors.name }}
+    </p>
     <label>Description: </label>
     <input type="text" name="description" />
     <br>
@@ -23,11 +25,15 @@
     <label>Width: </label>
     <input type="number" name="width" />
     <br>
-    <p>{{ errors.width }}</p>
+    <p class="error_msg">
+        {{ errors.width }}
+    </p>
     <label>Height: </label>
     <input type="number" name="height" />
     <br>
-    <p>{{ errors.height }}</p>
+    <p class="error_msg">
+        {{ errors.height }}
+    </p>
     <label>Doors: </label>
     {% for door in doors %}
         {# <p>{{ door.next_room }}<input type="checkbox" name="doors" value="{{ door.next_room }}"></p> #}

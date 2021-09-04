@@ -7,20 +7,32 @@
 <div>
     <h1>About this site</h1>
     <p>
-        Web site built using python, django and sqlite. Made to build interconnecting
-        rooms. Rooms are connected by a many to many relationship. Features I have used
-        and learned.
+        Web site built using python, django and sqlite. When creating this site. I wanted
+        to create crud interface using Django. First I set up a model for basic room with 
+        basic description for room and door. I used a many-to-many relationship for the 
+        room and doors. I also set up 'Choices' for the room. I set up to add doors to the
+        room using checkboxes to take advantage of the many-to-many relationship.
     </p>
     <p>
-        I used a choices option and read choices from within models. I
-        searched rooms and doors to add to room using checkboxes. Filters room
-        checkboxes so the door does cannot go back to itself. Or have two
-        door leading to the same room(This feature might be changed but was
-        good exercise to implement).
+        After I set this up. I added additional fields to the room and door. I added 
+        locations to the door model. This way I could position door in the room. Then
+        when editing the room. I added a list of available doors if user wanted to add
+        another after creation. I then filtered the list of doors to exclude the room
+        itself, I do not at this point want doors leading back to the same room. And
+        removed duplicate doors so you could have multiple doors going to same room.
     </p>
     <p>
-        Set up validation for forms. Compare entered value to room's values so door location
-        cannot exceed the width of the wall. &#x2611;
+        I added a new model for treasure to be added to rooms. I set it up as a one-
+        to-many realationship. This is because I did want to have a room with more
+        than one of the same type of treasure. Added a sort feature so it shows treasure
+        by room not just listed in order.
+    </p>
+    <p>
+        Then I added validation for forms. Compare entered value to room's values so door location
+        cannot exceed the width of the wall. &#x2611; Added validation so two doors cannot be 
+        located in the same space. &#x2611; I also tested the site to make sure and checked
+        functions to be sure they are working. Even though I use the number for input forms
+        when appropriate I added a check to make sure a number was entered and not text.
     </p>
     <p>
         Use check boxes to add multiple items to many to many field at the same time. &#x2611;
@@ -46,7 +58,7 @@
         Keep menu bar on top. &#x2611;
     </p>
     <p>
-        Add maps &#x2611; and overview map.
+        Add maps &#x2611; and overview map(not likely to happen for this version).
     </p>
     <p>
         Added visual representation of the room. Using arithmatic

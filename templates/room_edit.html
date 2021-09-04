@@ -27,11 +27,21 @@ body {
     <input type="text" name="shape" placeholder="{{edit_room.shape }}" />
     <br>
     <label>Width: </label>
-    <input type="number" name="width" placeholder="{{edit_room.width }}" />
-    <br>
+    <label class="error_msg">
+        {{ errors.alphabet }}
+    </label>
+    <input type="number" name="width" placeholder={{edit_room.width }} value={{edit_room.width}} />
+    <p class="error_msg">
+        {{ errors.width }}
+    </p>
     <label>Height: </label>
-    <input type="number" name="height" placeholder="{{ edit_room.height }}" />
-    <br>
+    <label class="error_msg">
+        {{ errors.alphabet }}
+    </label>
+    <input type="number" name="height" placeholder={{ edit_room.height }} value={{edit_room.height}} />
+    <p class="error_msg">
+        {{ errors.width }}
+    </p>
     <table>
         <tr>
             <th>Door</th>
@@ -42,7 +52,7 @@ body {
     {% for door in edit_room.doors.all %}
         <tr>
             <input type="hidden" name="doors" value="{{ door.id }}">
-            <td>{{ door.next_room }}</td>
+            <td><input type="text" id="next_room" value="{{ door.next_room }}" readonly></td>
             <td><input type="integer" name="doors" value= "{{ door.wall }}" /></td>
             <td><input type="integer" name="doors" value= "{{ door.location }}" /></td>
             <td><button><a href="{% url 'edit_door' door.id %}">Edit</a></button></td>
@@ -50,6 +60,9 @@ body {
         </tr>
     {% endfor %}
     </table>
+    <p class="error_msg">
+        {{ errors.minimum_location }}
+    </p>
     <br />
 {% for t in treasures %}
     <p>
@@ -64,9 +77,6 @@ body {
 {% for d in doors %}
         {% if edit_room.id != d.id %}
         <p>
-        <a href="{% url 'door_delete' d.id %}">
-            <button><strong>Delete</strong></button>
-        </a>
         Available Door: {{ d.name }}
             <input type="checkbox" name="dooradd" value="{{ d.name }}" />
         </p>

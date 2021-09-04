@@ -23,28 +23,34 @@ class TreasureManager(models.Manager):
 class RoomManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
-        if int(postData['width']) <= 0:
+        print (postData['width'].isnumeric())
+        if not postData['width'].isnumeric() or not postData['height'].isnumeric():
+            errors['alphabet'] = "Please enter a character."
+        if postData['width'] == "":
+            errors['width'] = "Please enter width."
+        elif postData['width'].isnumeric() and int(postData['width']) <= 0:
             errors['width'] = "Width cannot be zero or lower."
-        if int(postData['height']) <= 0:
+        if postData['height'] == "":
+            errors['height'] = "Please enter height."
+        elif postData['height'].isnumeric() and int(postData['height']) <= 0:
             errors['height'] = "Height cannot be zero or lower."
+        if len(postData['name']) > 2:
+            errors['name'] = "Room name must be at least 3 characters."
         return errors
 
 class DoorManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
-        if len(postData['next_room']) < 2:
+        if len(postData.get('next_room')) < 2:
             errors['next_room'] = "Door name should be more then 2 characters"
         if int(postData['location']) < 1:
             errors['minimum_location'] = "Location needs to be 1 or greater."
         room_validator = Room.objects.get(id=postData['room_id'])
-        #if postData['wall'] in room_validator.doors['wall']:
-        #    print('wall!')
-        #x = Door.objects.get(id=postData['id'])
-        x = Room.objects.doors.get.all()
-        print("aaaaaa")
-        print(str(x.wall) + ":" + str(postData['wall']))
-        if x.wall == postData['wall'] and x.location == postData['location']:
-            print("bbbbb")
+        y = room_validator.doors.all()
+        x = Door.objects.get(id = postData['id'])
+        for z in y:
+            if z.id != int(postData['id']) and z.wall == int(postData['wall']) and z.location == int(postData['location']):
+                errors['duplicate_door'] = "Cannot have 2 doors in same location."
         if postData['wall'] == 0 or postData['wall'] == 2:
             if int(postData['location']) >= room_validator.width:
                 errors['maximum_location'] = "Door cannot exceed length " + str(room_validator.width-1)
