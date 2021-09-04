@@ -154,10 +154,10 @@ def edit_treasure(request, treasure_id):
     print(edit_treasure.id)
     #treasure_rooms = Treasure.objects.filter(name=edit_treasure.name)
     treasure_rooms = Treasure.objects.get(pk = treasure_id)
-    treasure_rooms.room._meta.get_field('name').remote_field.model.__name__
+    #treasure_rooms.room._meta.get_field('name').remote_field.model.__name__
+    room_treasures = treasure_rooms.room.all()
     print("====")
     print(treasure_rooms)
-    room_treasures = Room.objects.all()
     if request.method == "POST":
         if request.POST.get('name') != "":
             edit_treasure.name = request.POST.get('name')
