@@ -153,9 +153,9 @@ def edit_treasure(request, treasure_id):
     edit_treasure = Treasure.objects.get(pk = treasure_id)
     print(edit_treasure.id)
     #treasure_rooms = Treasure.objects.filter(name=edit_treasure.name)
-    treasure_rooms = Treasure.objects.get(pk = treasure_id)
+    #treasure_rooms = Treasure.objects.get(pk = treasure_id)
     #treasure_rooms.room._meta.get_field('name').remote_field.model.__name__
-    room_treasures = Treasure.objects.filter(name = edit_treasure.name)
+    room_treasures = Room.objects.filter(name = edit_treasure.name)
     print("====")
     print(room_treasures)
     if request.method == "POST":
@@ -171,7 +171,7 @@ def edit_treasure(request, treasure_id):
             new_treasure.room_id = nd
             new_treasure.save()
         return redirect('treasure')
-    return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure, 'room_treasures':room_treasures, 'treasure_rooms':treasure_rooms})
+    return render(request, 'edit_treasure.html', {'edit_treasure':edit_treasure, 'room_treasures':room_treasures })
 
 def assign_treasure(request):
     return render(request, 'home.html')
