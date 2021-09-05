@@ -128,6 +128,7 @@ def edit_delete(request, door_id, room_id):
 
 def treasure(request):
     room_treasure = Treasure.objects.all().order_by("room")
+    print(room_treasure[0])
     rooms = Room.objects.all()
     if request.method == "POST":
         errors = Treasure.objects.basic_validator(request.POST)
@@ -155,7 +156,7 @@ def edit_treasure(request, treasure_id):
     #treasure_rooms = Treasure.objects.filter(name=edit_treasure.name)
     #treasure_rooms = Treasure.objects.get(pk = treasure_id)
     #treasure_rooms.room._meta.get_field('name').remote_field.model.__name__
-    room_treasures = Room.objects.filter(name = edit_treasure.name)
+    room_treasures = Room.objects.filter(room = edit_treasure.room)
     print("====")
     print(room_treasures)
     if request.method == "POST":
