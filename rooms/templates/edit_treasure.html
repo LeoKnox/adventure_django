@@ -6,6 +6,7 @@
 {% block content %}
 <h1>Edit treasure</h1>
 <p>{{ edit_treasure.name }}</p>
+<p>{{ edit_treasure.room.name }}</p>
 <form name="edit_treasure" action= "{% url 'edit_treasure'  edit_treasure.id %}" method="POST">
     {% csrf_token %}
     <label class="treasure_name">Treasure Name: </label>
@@ -22,18 +23,6 @@
         </dt>
     {% endfor %}
     </dl>
-    <ul>
-        {% for treasure in treasure_rooms %}
-            {% for t in treasure.room %}
-            <li>
-                <label class="treasure_name">
-                    {{ t.name }}                                       
-                </label>
-                <a href="{% url 'delete_treasure' treasure.id %}" class="delete_button">Remove from room</a>
-            </li><br>
-            {% endfor %}
-        {% endfor %}
-    </ul>
     {% for room in room_treasures %}
          <p>{{room.room.name}}:{{ room.name }}<input type="checkbox" name="new_doors" value="{{ room.id }}"></p>
     {% endfor %}
