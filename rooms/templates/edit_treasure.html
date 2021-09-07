@@ -24,7 +24,7 @@
     {% endfor %}
     </dl>
     {% for room in rooms_available %}
-         <p>{{ room }}<input type="checkbox" name="new_doors" value="{{ room.id }}"></p>
+         <p>{{ room.name }}<input type="checkbox" name="new_doors" value="{{ room.id }}"></p>
     {% endfor %}
     <button>Add treasure to rooms</button>
 </form>
