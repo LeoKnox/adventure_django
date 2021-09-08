@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+<div>
+{% block content %}
+    <h1>Kanji Quiz</h1>
+    <div id="quiz_content">
+    <div id="quiz_draw">
+        {% include 'includes/drawing.html' %}
+    </div>
+    <div id="question">
+        <h1>{{ quiz_kanji[3] }}</h1>
+    </div>
+    <div id="answer">
+        <p></p>
+    </div>
+    </div>
+    <div class="timeslider">
+        <input type="range" min="1" max="15" value="{{timer}}" class="slider" id="myRange">
+        <p> Time Limit: <span id="timeLimit"></span></p>
+    </div>
+    <button id="quiz_button" onclick="clearDrawing()">Clear</button>
+    <script src="{{ url_for('static', filename='js/practice.js') }}"></script>
+    <script type="text/javascript">
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("timeLimit");
+
+        output.innerHTML = slider.value;
+        kanji = "{{ quiz_kanji[1] }}";
+        showKanji(kanji, output.innerHTML);
+
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+        
+    </script>
+{% endblock %}
+</div>

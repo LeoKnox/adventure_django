@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>Pactice</h1>
+    <div class="grid-container">
+        <div id="nav_practice" class="grid-item">
+        <ul class="practice_ul">
+            <li class="liButton"><button id="remember_kanji"><a href="{{ url_for('remember_kanji')}}">Remember</a></button></li>
+            <li class="liButton"><button onclick="randKanji({{mykanji}})">Random</button></li>
+            <li class="liButton"><button id="next_button" value="{{introkanji[0]-1}}" onclick="nextKanji({{mykanji}}, this.value)">Next</button></li>
+            <li class="liButton"><button onclick="clearDrawing()">Clear</button></li>
+        </ul>
+        </div>
+        <div class="grid-item">
+        {% include 'includes/drawing.html' %}
+        <label id="display">{{introkanji[1]}}</label>
+        </div>
+        <div class="kanji_info">
+        <table>
+            <tr>
+                <th>Kanji</th>
+                <th>Translate</th>
+                <th>On'yomi</th>
+                <th>Kun'yomi</th>
+                <th>Grade</th>
+            </tr>
+            <tr id="kanji_row">
+                <td>{{introkanji[1]}}</td>
+                <td>{{introkanji[3]}}</td>
+                <td>{{introkanji[4]}}</td>
+                <td>{{introkanji[5]}}</td>
+                <td>{{introkanji[6]}}</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/practice.js') }}"></script>
+{% endblock %}

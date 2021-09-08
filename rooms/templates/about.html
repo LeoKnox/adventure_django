@@ -1,84 +1,46 @@
-{% extends "base.html" %}
-
-{% block navbar %}
-{% endblock %}
+{% extends "layout.html" %}
 
 {% block content %}
-<div>
-    <h1>About this site</h1>
-    <p>
-        Web site built using python, django and sqlite. When creating this site. I wanted
-        to create crud interface using Django. First I set up a model for basic room with 
-        basic description for room and door. I used a many-to-many relationship for the 
-        room and doors. I also set up 'Choices' for the room. I set up to add doors to the
-        room using checkboxes to take advantage of the many-to-many relationship.
-    </p>
-    <p>
-        After I set this up. I added additional fields to the room and door. I added 
-        locations to the door model. This way I could position door in the room. Then
-        when editing the room. I added a list of available doors if user wanted to add
-        another after creation. I then filtered the list of doors to exclude the room
-        itself, I do not at this point want doors leading back to the same room. And
-        removed duplicate doors so you could have multiple doors going to same room.
-    </p>
-    <p>
-        I added a new model for treasure to be added to rooms. I set it up as a one-
-        to-many realationship. This is because I did want to have a room with more
-        than one of the same type of treasure. Added a sort feature so it shows treasure
-        by room not just listed in order.
-    </p>
-    <p>
-        Then I added validation for forms. Compare entered value to room's values so door location
-        cannot exceed the width of the wall. &#x2611; Added validation so two doors cannot be 
-        located in the same space. &#x2611; I also tested the site to make sure and checked
-        functions to be sure they are working. Even though I use the number for input forms
-        when appropriate I added a check to make sure a number was entered and not text. added
-        a list of rooms where treasure is assigned and lets you delete them. Also added a feature
-        to allow to assign multple rooms to an item.
-    </p>
-    <p>
-        Use check boxes to add multiple items to many to many field at the same time. &#x2611;
-    </p>
-    <h1>New options</h1>
-    <p>
-        Change door edit. Add door then add locations. &#x2611;
-    </p>
-    <p>
-        More options to rooms and doors. Added treasure to rooms. Allows treasure to be edited.
-        &#x2611;
-    </p>
-    <p>
-        Location of doors. &#x2611;
-    </p>
-    <p>
-        Textures for doors
-    </p>
-    <p>
-        Remove old doors from database. &#x2611;
-    </p>
-    <p>
-        Keep menu bar on top. &#x2611;
-    </p>
-    <p>
-        Add maps &#x2611; and overview map(not likely to happen for this version).
-    </p>
-    <p>
-        Added visual representation of the room. Using arithmatic
-        operations on django variables to create room size and 
-        place doors both on wall and location on wall. &#x2611;
-    </p>
-    <p>
-        Find way to break up edit room. Since everything seems to
-        be on that page.
-    </p>
-    <p>
-        Add treasure and be able to add to room. &#x2611;
-    </p>
-    <p>
-        Add Api to app.
-    </p>
-    <p>
-        Changed room shape from geometric shapes to room styles. &#x2611;
-    </p>
-</div>
+    <h1>About</h1>
+    <div class="content">
+        <dl>
+            <dt class="about_dt">Goal</dt>
+            <dd class="about_dd">My goal in this was to create Kanji practice app. Other version I had tried didn't really
+                work as I wanted. I wanted a practice page where I could practice the kanji and learn the
+                definition and hiragana. Another feature I wanted was to be able to practice the same Kanji
+                over and over. Then quiz you on Kanji to practice what you have learned. Though other apps
+                had some of these features and many more not all of them were brought together the way I wanted.
+                The most important this for me being able to practice multiple times some apps would move you to
+                the next Kanji.
+            </dd>
+            <br/>
+            <dt class="about_dt">Execution</dt>
+            <dd class="about_dd">
+                My intention however is not create a competing app, maybe in time as I am continually adding to
+                it. My main purpose was working creating a web app that used both frontend and backend Technologies.
+                I used Mysql as the database. The datais pretty stable and sequential in nature and no lists. So
+                instead of using MongoDB I chose to take advantage of using MySql.
+            </dd>
+            <br/>
+            <dd class="about_dd">
+                Working on the frontend I did have to incorporate a lot of Javascript. I used a slider bar to change
+                the speed at which the Kanji. This required a script to change the Kanji after the time expired but
+                also another to update that time when the slider changed. The practice drawing was very involved as
+                well. I used svg to do the drawing. That required recording the points and plotting them on the page.
+                Also you needed to break the drawing and start again when you clicked with the mouse. Finally I needed
+                to clear the drawing and maintain the information so it could be drawn again. I used some css grid
+                templates to layout the practice page which had more parts to it.
+            </dd>
+            <br/>
+            <dt class="about_dt">Technologies</dt>
+            <dd class="about_dd">
+                Backend technologies were MySql for the Database. Python and Flask for webserver. Frontend was normal
+                html, css and javascript. I used MySql workbench to develop searches before implementing them in Flask.
+                I also used Json to transport data to the webpage.
+            </dd>
+            <dd>
+                Attribution to Wikipedia for providing Kanji information.
+            </dd>
+        </dl>
+        </div>
 {% endblock %}

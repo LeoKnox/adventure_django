@@ -1,0 +1,261 @@
+body {
+    background:lightblue;
+    padding: 0;
+    margin: 0;
+    font-family: 'Yu Gothic', sans-serif;
+    background: radial-gradient(circle at top left, lightblue, lightblue, darkblue 110%);
+}
+
+html {
+    min-height: 100%;
+}
+
+nav {
+    box-shadow: 0 0 25px 0 darkblue;
+}
+
+button {
+    width: 100%;
+    font-size: 1.5em;
+    text-align: left;
+}
+
+table {
+    font-size: 2em;
+}
+
+.nav_ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000099;
+}
+
+.nav_li {
+    float: left;
+}
+
+.nav_li a {
+    display: block;
+    color: gold;
+    font-weight: bold;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav_li a:hover:not(.active) {
+    background-color: #888888;
+}
+
+.active {
+    background-color: #000066;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: .5fr 3fr 3fr;
+    grid-gap: 20px;
+    min-height: 400px;
+}
+
+.grid-item {
+    background-color: palegoldenrod;
+    border-top: 7px goldenrod solid;
+    padding: 15px;
+    border-radius: 0 15px 0 0;
+}
+
+#nav_practice {
+    border-radius: 0;
+    border-top: 7px goldenrod solid;
+}
+
+.kanji_info {
+    grid-column: 1 / 3;
+    grid-row: 2;
+    background-color: palegoldenrod;
+    padding: 15px;
+    border-radius: 0 0 15px 0;
+    font-size: .8em;
+}
+
+.practice_ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.liButton {
+    display: block;
+}
+
+.liButton a {
+    text-decoration: none;
+}
+
+.liButton button {
+    background-color: goldenrod;
+    color: white;
+}
+
+#display {
+    display: inline;
+    font-size: 7em;
+    padding-left: 30px;
+}
+
+#draw {
+    border: 2px solid black;
+    margin-left: 30px;
+}
+
+#tablet {
+    display: inline;
+}
+
+#quiz_content {
+    display: grid;
+    width: 600px;
+    background-color: palegoldenrod;
+    padding: 15px;
+    border-top: 7px goldenrod solid;
+    border-radius: 0 15px 15px 0;
+    margin-bottom: 25px;
+    min-height: 400px;
+}
+
+#quiz_draw {
+    grid-column:1 / 2;
+    grid-row: 1 / 3;
+}
+
+#question {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+#answer {
+    grid-column: 3;
+    grid-row: 2;
+    align-items: flex-start;
+    padding: 0;
+}
+
+#answer p {
+    font-size: 4em;
+    padding: 0;
+    margin: 0;
+}
+
+dt {
+    font-size: 1.2em;
+    color: darkblue;
+    padding-left: 4px;
+    font-weight: bold;
+}
+
+dl {
+    font-size: 1.4em;
+    background-color: palegoldenrod;
+    border-top: 7px goldenrod solid;
+    border-radius: 0 25px 25px 0;
+    width: 600px;
+    min-height: 400px;
+}
+
+input[type=checkbox] + label {
+    color: darkred;
+}
+
+input[type=checkbox]:checked + label {
+    color: darkblue;
+    padding: 5px 10px;
+    background-color: rgb(214, 209, 152);
+}
+
+.timeslider {
+    margin-left: 15px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 500px;
+    height: 15px;
+    border-radius: 5px;
+    background: palegoldenrod;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: blue;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: blue;
+}
+
+.index_button {
+    background-color: goldenrod;
+    color: white;
+    padding: 7px 25px;
+    font-size: 1.6em;
+}
+
+#quiz_button {
+    width: 200px;
+    background-color: goldenrod;
+    color: white;
+    padding: 15px;
+}
+
+.kanji_info th, td {
+    border: 2px solid goldenrod;
+    padding: 2px 6px;
+    background-color: rgb(214, 209, 152);
+}
+
+.content {
+    background-color: palegoldenrod;
+    padding: 25px;
+    width: 800px;
+    border-top: 7px goldenrod solid;
+    border-radius: 0 15px 15px 0;
+    min-height: 400px;
+    font-family: "Georgia"
+}
+
+h1 {
+    color: blue;
+    text-shadow: 4px 4px 4px darkgoldenrod;
+    font-family: 'Courier New';
+}
+
+#grade1:hover {
+    color: green;
+}
+
+.about_dt {
+    font-size: .9em;
+}
+
+.about_dd {
+    font-size: .8em;
+    color: blue;
+}
